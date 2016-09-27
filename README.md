@@ -16,6 +16,9 @@ This repository consists of four projects:
  - GameLiftLinuxServer (coming soon!)
   - GameLiftGameServer Linux version
 
+Overview:
+![Screenshot](overview.png)
+
 ## But, why?
 I received many questions from game developers about GameLift. Major questions were like that:
  - Can we use other game engines such as Unreal3D and Unity3D with GameLift?
