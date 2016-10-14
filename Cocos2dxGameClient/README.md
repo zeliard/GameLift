@@ -5,7 +5,7 @@ This makes GameLift Client API calls to GameLift services and makes a TCP connec
 
 ## How-to
 
- - Edit main.cpp file and then set your GameLift ALIAS_ID.
+ - Edit main.cpp file and then set your GameLift ALIAS_ID, GAMELIFT_REGION.
  - Build and Run.
  - Press 'L' to login to the GameLiftGameServer.
  
