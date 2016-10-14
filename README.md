@@ -13,7 +13,7 @@ This repository consists of four projects:
  - Cocos2dxGameClient
   - A game client which integrates with Cocos2D-x game engine and AWS C++ SDK
   - GameLift Client API calls to GameLift services and a TCP connection to GameLiftGameServer
- - GameLiftLinuxServer (coming soon!)
+ - GameLiftLinuxServer
   - GameLiftGameServer Linux version
 
 Overview:
