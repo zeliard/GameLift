@@ -6,6 +6,7 @@
 #include "GameLiftManager.h"
 
 #define ALIAS_ID "Input Your ALIAS_ID"
+#define GAMELIFT_REGION Aws::Region::AP_NORTHEAST_1
 
 USING_NS_CC;
 
@@ -22,7 +23,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 
 	GGameLiftManager = new GameLiftManager(ALIAS_ID);
 
-	GGameLiftManager->SetUpAwsClient();
+	GGameLiftManager->SetUpAwsClient(GAMELIFT_REGION);
 
     // create the application instance
     AppDelegate app;
