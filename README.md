@@ -1,6 +1,10 @@
 ## Amazon GameLift?
 [Amazon GameLift](https://aws.amazon.com/gamelift/) is a managed service for deploying, operating, and scaling session-based multiplayer games, reduces the time required to build a multiplayer backend from thousands of hours to just minutes. Available for developers using Amazon Lumberyard, Amazon GameLift is built on AWS’s highly available cloud infrastructure and allows you to quickly scale high-performance game servers up and down to meet player demand – without any additional engineering effort or upfront costs. 
 
+### Amazon GameLift Deep Dive from Gaming on AWS 2016
+The following presentation explains GameLift features and fundamentals: [Amazon GameLift Deep Dive](GameLift_dist.pdf)
+
+
 ## This repository? 
 This repository consists of four projects: 
  - GameLiftGameServer
