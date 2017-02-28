@@ -15,7 +15,7 @@ GameLiftManager::GameLiftManager(const std::string& alias) : mAliasId(alias)
 {
 }
 
-void GameLiftManager::SetUpAwsClient(Aws::Region region)
+void GameLiftManager::SetUpAwsClient(const std::string& region)
 {
 	
 	Aws::Client::ClientConfiguration config;

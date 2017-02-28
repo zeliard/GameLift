@@ -293,3 +293,5 @@ __pycache__/
 
 ### VisualStudio Patch ###
 build/
+Cocos2dxGameClient/cocos2d/
+Cocos2dxGameClient/proj.win32/Debug.win32/

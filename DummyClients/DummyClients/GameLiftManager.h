@@ -8,7 +8,7 @@ class GameLiftManager
 public:
 	GameLiftManager(const std::string& alias);
 
-	void SetUpAwsClient(Aws::Region region);
+	void SetUpAwsClient(const std::string& region);
 	void PrepareGameSessions(int gsCount);
 	void LaunchGameSessions();
 	void TerminateGameSessions();
