@@ -1,7 +1,7 @@
 #pragma once
 
 
-#define ALIAS_ID "alias-your-alias-id"
+#define ALIAS_ID "alias-xxxx-xxxx-input-yours"
 
 #define MAX_GAME_SESSIONS	1
 
@@ -14,4 +14,4 @@
 #define	PLAYER_ACTION_INTERVAL	100
 
 /// Test Player Session Count == mMaxPlayerCount - TEST_PLAYER_SESSION_EXCEPT
-#define TEST_PLAYER_SESSION_EXCEPT	0
+#define TEST_PLAYER_SESSION_EXCEPT	1

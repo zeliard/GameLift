@@ -295,3 +295,5 @@ __pycache__/
 build/
 Cocos2dxGameClient/cocos2d/
 Cocos2dxGameClient/proj.win32/Debug.win32/
+/Cocos2dxGameClient/proj.win32/Release.win32/UserDefault.xml
+/Cocos2dxGameClient/proj.win32/Release.win32/game.res

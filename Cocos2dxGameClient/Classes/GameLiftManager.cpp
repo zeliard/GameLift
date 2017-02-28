@@ -17,7 +17,7 @@ GameLiftManager::GameLiftManager(const std::string& alias) : mAliasId(alias)
 {
 }
 
-void GameLiftManager::SetUpAwsClient()
+void GameLiftManager::SetUpAwsClient(const std::string& region)
 {
 
 	Aws::Client::ClientConfiguration config;
@@ -25,7 +25,7 @@ void GameLiftManager::SetUpAwsClient()
 	config.connectTimeoutMs = 30000;
 	config.requestTimeoutMs = 30000;
 
-	config.region = Aws::Region::AP_NORTHEAST_1;
+	config.region = region;
 
 	mGLClient = Aws::MakeShared<Aws::GameLift::GameLiftClient>("GameLiftTest", config);
 

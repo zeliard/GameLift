@@ -14,6 +14,7 @@
     <ProjectGuid>{76A39BB2-9B84-4C65-98A5-654D86B86F2A}</ProjectGuid>
     <RootNamespace>test_win32</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -71,7 +72,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories);../Classes/include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(EngineRoot)cocos\audio\include;$(EngineRoot)external;$(EngineRoot)external\chipmunk\include\chipmunk;$(EngineRoot)extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -84,7 +85,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);aws-cpp-sdk-gamelift.lib;aws-cpp-sdk-core.lib;Userenv.lib;Rpcrt4.lib;Wininet.lib;winhttp.lib;Bcrypt.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);Userenv.lib;Rpcrt4.lib;Wininet.lib;winhttp.lib;Bcrypt.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
       <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);../libd</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -177,7 +178,23 @@ if not exist "$(OutDir)UserDefault.xml" copy "$(ProjectDir)UserDefault.xml" "$(O
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\AWSSDKCPP-GameLift.redist.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.redist.targets" Condition="Exists('packages\AWSSDKCPP-GameLift.redist.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.redist.targets')" />
+    <Import Project="packages\AWSSDKCPP-GameLift.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.targets" Condition="Exists('packages\AWSSDKCPP-GameLift.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.targets')" />
+    <Import Project="packages\AWSSDKCPP-Core.redist.1.0.75\build\native\AWSSDKCPP-Core.redist.targets" Condition="Exists('packages\AWSSDKCPP-Core.redist.1.0.75\build\native\AWSSDKCPP-Core.redist.targets')" />
+    <Import Project="packages\AWSSDKCPP-Core.1.0.75\build\native\AWSSDKCPP-Core.targets" Condition="Exists('packages\AWSSDKCPP-Core.1.0.75\build\native\AWSSDKCPP-Core.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\AWSSDKCPP-GameLift.redist.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AWSSDKCPP-GameLift.redist.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.redist.targets'))" />
+    <Error Condition="!Exists('packages\AWSSDKCPP-GameLift.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AWSSDKCPP-GameLift.1.0.20151001.75\build\native\AWSSDKCPP-GameLift.targets'))" />
+    <Error Condition="!Exists('packages\AWSSDKCPP-Core.redist.1.0.75\build\native\AWSSDKCPP-Core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AWSSDKCPP-Core.redist.1.0.75\build\native\AWSSDKCPP-Core.redist.targets'))" />
+    <Error Condition="!Exists('packages\AWSSDKCPP-Core.1.0.75\build\native\AWSSDKCPP-Core.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\AWSSDKCPP-Core.1.0.75\build\native\AWSSDKCPP-Core.targets'))" />
+  </Target>
 </Project>
