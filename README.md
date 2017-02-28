@@ -1,6 +1,10 @@
 ## Amazon GameLift?
 [Amazon GameLift](https://aws.amazon.com/gamelift/) is a managed service for deploying, operating, and scaling session-based multiplayer games, reduces the time required to build a multiplayer backend from thousands of hours to just minutes. Available for developers using Amazon Lumberyard, Amazon GameLift is built on AWS’s highly available cloud infrastructure and allows you to quickly scale high-performance game servers up and down to meet player demand – without any additional engineering effort or upfront costs. 
 
+### Amazon GameLift Deep Dive from Gaming on AWS 2016
+The following presentation explains GameLift features and fundamentals: [Amazon GameLift Deep Dive](GameLift_dist.pdf)
+
+
 ## This repository? 
 This repository consists of four projects: 
  - GameLiftGameServer
@@ -36,7 +40,7 @@ It is easy to build and run GameLiftGameServer and DummyClients. The only prereq
  3. Create a GameLift Fleet by AWS Console (use a port number as Launch parameter)
  4. Open DummyClients solution file and edit DummyClients.h file in your context. (set ALIAS_ID, GAMELIFT_REGION, and MAX_GAME_SESSIONS)
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
- 6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, and then RUN! (you can login by pressing 'L' key.)
+ 6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, GAMELIFT_REGION, and then RUN! (you can login by pressing 'L' key.)
 
 ## And...
 Some codes are written in a quick-and-dirty manner. But I plan to continuously improve these (if someone needs :)  
