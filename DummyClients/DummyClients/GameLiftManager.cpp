@@ -26,7 +26,6 @@ void GameLiftManager::SetUpAwsClient(const std::string& region)
 	config.region = region;
 	
 	mGLClient = Aws::MakeShared<Aws::GameLift::GameLiftClient>("GameLiftTest", config);
-	
 }
 
 void GameLiftManager::PrepareGameSessions(int gsCount)
@@ -66,3 +65,19 @@ void GameLiftManager::TerminateGameSessions()
 		gs->DisconnectPlayerSessions();
 	}
 }
+
+void GameLiftManager::LaunchGameSessionPlacement()
+{
+	for (auto& gs : mGameSessions)
+	{
+		if (gs->StartGameSessionPlacement())
+		{
+			if (gs->CreatePlayerSessions())
+			{
+				gs->ConnectPlayerSessions();
+			}
+		}
+		Sleep(1000);
+	}
+}
+

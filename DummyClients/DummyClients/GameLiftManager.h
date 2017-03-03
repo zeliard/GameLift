@@ -13,6 +13,9 @@ public:
 	void LaunchGameSessions();
 	void TerminateGameSessions();
 
+	/// New API Test: StartGameSessionPlacement
+	void LaunchGameSessionPlacement();
+
 	std::shared_ptr<Aws::GameLift::GameLiftClient> GetAwsClient()
 	{
 		return mGLClient;

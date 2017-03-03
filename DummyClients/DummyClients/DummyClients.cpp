@@ -62,7 +62,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	printf_s("Start Game Sessions...\n");
 
+#ifdef USE_MATCH_QUEUE
+	GGameLiftManager->LaunchGameSessionPlacement();
+#else
 	GGameLiftManager->LaunchGameSessions();
+#endif
+	
+
 	
 	/// block here...
 	getchar();

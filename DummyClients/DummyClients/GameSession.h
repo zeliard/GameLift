@@ -25,6 +25,11 @@ public:
 	bool ConnectPlayerSessions();
 	void DisconnectPlayerSessions();
 
+	bool StartGameSessionPlacement();
+	bool CheckGameSessionPlacement();
+
+	void GeneratePlacementId();
+
 private:
 	typedef std::list<PlayerSession*> ClientList;
 	ClientList	mReadySessionList;
@@ -41,6 +46,8 @@ private:
 	std::string mGameSessionId;
 
 	std::vector<Aws::GameLift::Model::PlayerSession> mPlayerSessionList;
+
+	std::string mPlacementId;
 
 	friend class PlayerSession;
 };

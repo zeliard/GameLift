@@ -6,10 +6,16 @@
 #include "GameSession.h"
 #include "IocpManager.h"
 #include "GameLiftManager.h"
+#include "PacketType.h"
+#include "DummyClients.h"
 
+#include <Rpc.h>
 #include <aws/core/utils/Outcome.h>
 #include <aws/gamelift/model/CreateGameSessionRequest.h>
 #include <aws/gamelift/model/CreatePlayerSessionsRequest.h>
+#include <aws/gamelift/model/StartGameSessionPlacementRequest.h>
+#include <aws/gamelift/model/DescribeGameSessionPlacementRequest.h>
+#include <aws/gamelift/model/DescribeGameSessionDetailsRequest.h>
 
 GameSession::~GameSession()
 {
@@ -116,3 +122,105 @@ void GameSession::DisconnectPlayerSessions()
 	}
 }
 
+bool GameSession::StartGameSessionPlacement()
+{
+	FastSpinlockGuard guard(mLock);
+
+	/// region reset for a match queue...
+	GGameLiftManager->SetUpAwsClient(GAMELIFT_REGION);
+
+	GeneratePlacementId();
+
+	Aws::GameLift::Model::StartGameSessionPlacementRequest req;
+	req.SetGameSessionQueueName(MATCH_QUEUE_NAME);
+	req.SetMaximumPlayerSessionCount(MAX_PLAYER_PER_GAME);
+	req.SetPlacementId(mPlacementId);
+
+	auto outcome = GGameLiftManager->GetAwsClient()->StartGameSessionPlacement(req);
+	if (outcome.IsSuccess())
+	{
+		auto status = outcome.GetResult().GetGameSessionPlacement().GetStatus();
+
+		if (status == Aws::GameLift::Model::GameSessionPlacementState::PENDING)
+		{
+			return CheckGameSessionPlacement();
+		}
+
+		if (status == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
+			return true;
+	}
+
+	printf_s("%s\n", outcome.GetError().GetMessageA().c_str());
+
+	return false;
+}
+
+bool GameSession::CheckGameSessionPlacement()
+{
+	while (true)
+	{
+		Aws::GameLift::Model::DescribeGameSessionPlacementRequest req;
+		req.SetPlacementId(mPlacementId);
+		auto outcome = GGameLiftManager->GetAwsClient()->DescribeGameSessionPlacement(req);
+		if (outcome.IsSuccess())
+		{
+			auto gs = outcome.GetResult().GetGameSessionPlacement();
+
+			if (gs.GetStatus() == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
+			{
+				auto arn = gs.GetGameSessionArn();
+				
+				std::string delim ="::gamesession";
+				std::string region = arn.substr(0, arn.find(delim));
+				region = region.substr(17);
+			
+				/// change region...
+				GGameLiftManager->SetUpAwsClient(region);
+				
+				Aws::GameLift::Model::DescribeGameSessionDetailsRequest request;
+				
+				request.SetGameSessionId(arn);
+				auto response = GGameLiftManager->GetAwsClient()->DescribeGameSessionDetails(request);
+				if (response.IsSuccess())
+				{
+					// GameSession Fulfill..
+					auto result = response.GetResult().GetGameSessionDetails();
+					mIpAddress = result[0].GetGameSession().GetIpAddress();
+					mPort = result[0].GetGameSession().GetPort();
+					mGameSessionId = arn;
+				}
+				else
+				{
+					printf_s("%s\n", response.GetError().GetMessageA().c_str());
+					return false;
+				}
+				
+				return true;
+			}
+
+		}
+		else
+		{
+			break;
+		}
+
+		Sleep(500);
+	}
+
+	return false;
+
+}
+
+void GameSession::GeneratePlacementId()
+{
+	UUID uuid;
+	UuidCreate(&uuid);
+
+	unsigned char* str = nullptr;
+	UuidToStringA(&uuid, &str);
+
+	mPlacementId.clear();
+	mPlacementId = std::string((char*)str);
+
+	RpcStringFreeA(&str);
+}
