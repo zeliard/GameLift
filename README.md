@@ -38,9 +38,11 @@ It is easy to build and run GameLiftGameServer and DummyClients. The only prereq
  1. Open GameLiftGameServer solution file and then build it.
  2. Upload a GameLiftGameServer binary with affiliated files (dlls, logs in upload folder) by AWS CLI
  3. Create a GameLift Fleet by AWS Console (use a port number as Launch parameter)
- 4. Open DummyClients solution file and edit DummyClients.h file in your context. (set ALIAS_ID, GAMELIFT_REGION, and MAX_GAME_SESSIONS)
+ 4. Open DummyClients solution file and edit DummyClients.h file in your context. set AWS_REGION and MAX_GAME_SESSIONS
+  - When you want to access the fleet directly: just set ALIAS_ID
+  - When you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
- 6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, GAMELIFT_REGION, and then RUN! (you can login by pressing 'L' key.)
+ 6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, AWS_REGION, and then RUN! (you can login by pressing 'L' key.)
 
 ## And...
 Some codes are written in a quick-and-dirty manner. But I plan to continuously improve these (if someone needs :)  
