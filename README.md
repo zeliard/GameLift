@@ -8,17 +8,17 @@ The following presentation explains GameLift features and fundamentals: [Amazon 
 ## This repository? 
 This repository consists of four projects: 
  - GameLiftGameServer
-  - A stand-alone game server example utilizing GameLift. But, it has no dependency with Lumberyard as well as GridMate.
-  - WIN64-based game server which listens a TCP port for clients and handles those requests
+   - A stand-alone game server example utilizing GameLift. But, it has no dependency with Lumberyard as well as GridMate.
+   - WIN64-based game server which listens a TCP port for clients and handles those requests
  - DummyClients
-  - WIN64-based client application for testing GameLift and GameLiftGameServer
-  - Creating multiple clients which make TCP session to GameLiftGameServer and communicate GameLift service in order to establish game sessions and player sessions by using AWS C++ SDK
-  - Game client workload generator: this can be extended for a GameLift scaling/stress test or scenario-based client bot test
+   - WIN64-based client application for testing GameLift and GameLiftGameServer
+   - Creating multiple clients which make TCP session to GameLiftGameServer and communicate GameLift service in order to establish game sessions and player sessions by using AWS C++ SDK
+   - Game client workload generator: this can be extended for a GameLift scaling/stress test or scenario-based client bot test
  - Cocos2dxGameClient
-  - A game client which integrates with Cocos2D-x game engine and AWS C++ SDK
-  - GameLift Client API calls to GameLift services and a TCP connection to GameLiftGameServer
+   - A game client which integrates with Cocos2D-x game engine and AWS C++ SDK
+   - GameLift Client API calls to GameLift services and a TCP connection to GameLiftGameServer
  - GameLiftLinuxServer
-  - GameLiftGameServer Linux version
+   - GameLiftGameServer Linux version
 
 Overview:
 ![Screenshot](overview.png)
@@ -39,8 +39,8 @@ It is easy to build and run GameLiftGameServer and DummyClients. The only prereq
  2. Upload a GameLiftGameServer binary with affiliated files (dlls, logs in upload folder) by AWS CLI
  3. Create a GameLift Fleet by AWS Console (use a port number as Launch parameter)
  4. Open DummyClients solution file and edit DummyClients.h file in your context. set AWS_REGION and MAX_GAME_SESSIONS
-  - When you want to access the fleet directly: just set ALIAS_ID
-  - When you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME
+    - When you want to access the fleet directly: just set ALIAS_ID
+    - When you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
  6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, AWS_REGION, and then RUN! (you can login by pressing 'L' key.)
 
