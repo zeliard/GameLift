@@ -16,6 +16,8 @@ void Timer::PushTimerJob(SessionPtr owner, const TimerTask& task, uint32_t after
 {
 	CRASH_ASSERT(LThreadType == THREAD_IO_WORKER);
 
+	FastSpinlockGuard writeLock(mLock);
+
 	int64_t dueTimeTick = after + LTickCount;
 
 	mTimerJobQueue.push(TimerJobElement(owner, task, dueTimeTick));
@@ -24,6 +26,9 @@ void Timer::PushTimerJob(SessionPtr owner, const TimerTask& task, uint32_t after
 
 void Timer::DoTimerJob()
 {
+	bool isExclusive = false;
+	FastSpinlockGuard readLock(mLock, isExclusive);
+
 	/// thread tick update
 	LTickCount = GetTickCount64();
 

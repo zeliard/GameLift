@@ -1,4 +1,5 @@
 #pragma once
+#include "FastSpinlock.h"
 
 class Session;
 typedef std::function<void()> TimerTask;
@@ -40,5 +41,6 @@ private:
 
 	TimerJobPriorityQueue	mTimerJobQueue;
 
-};
+	FastSpinlock	mLock;
 
+};
