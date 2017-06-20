@@ -1,43 +1,36 @@
-/*
-The MIT License (MIT)
-
-Copyright (c) 2016 Seungmo Koo (@teralode)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-*/
-
-
 #include "stdafx.h"
 
 #include <aws/core/Aws.h>
 
+#include "PacketType.h"
 #include "DummyClients.h"
 #include "Exception.h"
 #include "PlayerSession.h"
 #include "GameSession.h"
 #include "IocpManager.h"
 #include "GameLiftManager.h"
+#include "INIReader.h"
 
-
+int PLAYER_ACTION_REQUEST = 0;
+int TEST_PLAYER_SESSION_EXCEPT = 0;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+	INIReader iniReader("config.ini");
+	if (iniReader.ParseError() < 0)
+	{
+		printf_s("config.ini not found\n");
+		return 0;
+	}
+
+	const std::string& aliasId = iniReader.Get("config", "ALIAS_ID", "TEST_LOCAL");
+	const std::string& region = iniReader.Get("config", "GAMELIFT_REGION", "127.0.0.1:9080");
+	int maxGameSessionCount = iniReader.GetInteger("config", "MAX_GAME_SESSIONS", 1);
+
+	PLAYER_ACTION_REQUEST = iniReader.GetInteger("config", "PLAYER_ACTION_REQUEST", 500);
+	int dummySessionCountPerGameSession = iniReader.GetInteger("config", "DUMMY_PLAYER_SESSION_PER_GAME_SESSION", 8);
+	TEST_PLAYER_SESSION_EXCEPT = MAX_PLAYER_PER_GAME - dummySessionCountPerGameSession;
+
 	Aws::SDKOptions options;
 	Aws::InitAPI(options);
 
@@ -48,14 +41,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/// Global Managers
 	GIocpManager = new IocpManager;
-	GGameLiftManager = new GameLiftManager(ALIAS_ID);
+	GGameLiftManager = new GameLiftManager(aliasId, region);
 
-	GGameLiftManager->SetUpAwsClient(GAMELIFT_REGION);
+	GGameLiftManager->SetUpAwsClient(region);
 
 	if (false == GIocpManager->Initialize())
 		return -1;
 
-	GGameLiftManager->PrepareGameSessions(MAX_GAME_SESSIONS);
+	GGameLiftManager->PrepareGameSessions(maxGameSessionCount);
 
 	if (false == GIocpManager->StartIoThreads())
 		return -1;
@@ -68,7 +61,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	GGameLiftManager->LaunchGameSessions();
 #endif
 	
-
 	
 	/// block here...
 	getchar();

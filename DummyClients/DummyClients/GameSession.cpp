@@ -47,7 +47,17 @@ bool GameSession::CreateGameSession()
 	FastSpinlockGuard guard(mLock);
 
 	Aws::GameLift::Model::CreateGameSessionRequest req;
-	req.SetAliasId(GGameLiftManager->GetAliasId());
+	
+	auto aliasId = GGameLiftManager->GetAliasId();
+	if (aliasId == "TEST_LOCAL")
+	{
+		req.SetFleetId(std::string("fleet-") + mGameSessionName);
+	}
+	else
+	{
+		req.SetAliasId(aliasId);
+	}
+	
 	req.SetName(mGameSessionName);
 	req.SetMaximumPlayerSessionCount(mMaxPlayerCount);
 	auto outcome = GGameLiftManager->GetAwsClient()->CreateGameSession(req);
@@ -127,7 +137,7 @@ bool GameSession::StartGameSessionPlacement()
 	FastSpinlockGuard guard(mLock);
 
 	/// region reset for a match queue...
-	GGameLiftManager->SetUpAwsClient(GAMELIFT_REGION);
+	GGameLiftManager->SetUpAwsClient(GGameLiftManager->GetRegion());
 
 	GeneratePlacementId();
 

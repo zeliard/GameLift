@@ -80,6 +80,12 @@
     <ClInclude Include="JobDispatcher.h">
       <Filter>Utils</Filter>
     </ClInclude>
+    <ClInclude Include="ini.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="INIReader.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -130,8 +136,15 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
+    <ClCompile Include="ini.c">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="INIReader.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="config.ini" />
   </ItemGroup>
 </Project>

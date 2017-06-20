@@ -11,19 +11,25 @@ GameLiftManager* GGameLiftManager = nullptr;
 
 
 
-GameLiftManager::GameLiftManager(const std::string& alias) : mAliasId(alias)
+GameLiftManager::GameLiftManager(const std::string& alias, const std::string& region) : mAliasId(alias), mRegion(region)
 {
 }
 
 void GameLiftManager::SetUpAwsClient(const std::string& region)
 {
-	
 	Aws::Client::ClientConfiguration config;
 	config.scheme = Aws::Http::Scheme::HTTPS;
-	config.connectTimeoutMs = 30000;
-	config.requestTimeoutMs = 30000;
+	config.connectTimeoutMs = 10000;
+	config.requestTimeoutMs = 10000;
 
 	config.region = region;
+
+	/// In case of GameLift Local
+	if (mAliasId == "TEST_LOCAL")
+	{
+		config.scheme = Aws::Http::Scheme::HTTP;
+		config.endpointOverride = region;
+	}
 	
 	mGLClient = Aws::MakeShared<Aws::GameLift::GameLiftClient>("GameLiftTest", config);
 }
