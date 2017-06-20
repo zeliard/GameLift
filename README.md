@@ -29,7 +29,6 @@ I received many questions from game developers about GameLift. Major questions w
  - Can we leverage GameLift-alone with no dependency with Lumberyard?
  - How can we integrate our own game server to GameLift without GridMate?
  - Is there any other GameLift sample code using TCP protocol?
- - We’ve been confused between GameLift Client SDK in Lumberyard and GameLift Client APIs in AWS C++ SDK. It seems that the API documents in AWS web-site are auto-generated from the source code. Is there any easier or kind document?
  
 As you can see, the facts of the matter are to study GameLift-alone features for their game and they want to know how to use GameLift SDK. So, I have started to make a sample program for better communication with game developers. The goal of this project is to show interactions among a game server, game clients and Gamelift. 
 
@@ -37,10 +36,9 @@ As you can see, the facts of the matter are to study GameLift-alone features for
 It is easy to build and run GameLiftGameServer and DummyClients. The only prerequisite is Visual Studio 2013.
  1. Open GameLiftGameServer solution file and then build it.
  2. Upload a GameLiftGameServer binary with affiliated files (dlls, logs in upload folder) by AWS CLI
- 3. Create a GameLift Fleet by AWS Console (use a port number as Launch parameter)
- 4. Open DummyClients solution file and edit DummyClients.h file in your context. set AWS_REGION and MAX_GAME_SESSIONS
-    - When you want to access the fleet directly: just set ALIAS_ID
-    - When you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME
+ 3. Create a GameLift Fleet by AWS Console
+ 4. Open DummyClients solution file and edit config.ini file. set ALIAS_ID, GAMELIFT_REGION and MAX_GAME_SESSIONS
+    - Note: when you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME in DummyClients.h
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
  6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, AWS_REGION, and then RUN! (you can login by pressing 'L' key.)
 
