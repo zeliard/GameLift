@@ -8,7 +8,7 @@
 
 
 /// request sending interval (ms)
-#define	PLAYER_ACTION_INTERVAL	100
+extern int PLAYER_ACTION_INTERVAL;
 
 /// How many times to send a request
 extern int PLAYER_ACTION_REQUEST;

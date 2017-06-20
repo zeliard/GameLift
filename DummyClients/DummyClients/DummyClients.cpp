@@ -13,6 +13,7 @@
 
 int PLAYER_ACTION_REQUEST = 0;
 int TEST_PLAYER_SESSION_EXCEPT = 0;
+int PLAYER_ACTION_INTERVAL = 1000;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -27,7 +28,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	const std::string& region = iniReader.Get("config", "GAMELIFT_REGION", "127.0.0.1:9080");
 	int maxGameSessionCount = iniReader.GetInteger("config", "MAX_GAME_SESSIONS", 1);
 
-	PLAYER_ACTION_REQUEST = iniReader.GetInteger("config", "PLAYER_ACTION_REQUEST", 500);
+	PLAYER_ACTION_REQUEST = iniReader.GetInteger("config", "PLAYER_ACTION_REQUEST", 60);
+	PLAYER_ACTION_INTERVAL = iniReader.GetInteger("config", "PLAYER_ACTION_INTERVAL", 1000);
+
 	int dummySessionCountPerGameSession = iniReader.GetInteger("config", "DUMMY_PLAYER_SESSION_PER_GAME_SESSION", 8);
 	TEST_PLAYER_SESSION_EXCEPT = MAX_PLAYER_PER_GAME - dummySessionCountPerGameSession;
 
