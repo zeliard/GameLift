@@ -106,7 +106,25 @@ void GameLiftManager::OnProcessTerminate()
 
 	// game-specific tasks required to gracefully shut down a game session, 
 	// such as notifying players, preserving game state data, and other cleanup
+	if (mActivated)
+	{
+		GConsoleLog->PrintOut(true, "[GAMELIFT] OnProcessTerminate Success\n");
+		TerminateGameSession(0xDEAD);
+	}
+}
 
+void GameLiftManager::CheckTerminateGameSession()
+{
+	// accepted full, but no ones here
+	if (mAcceptedCount >= MAX_PLAYER_PER_GAME && mRemovedCount >= MAX_PLAYER_PER_GAME && mActivated)
+	{
+		GConsoleLog->PrintOut(true, "[GAMELIFT] Terminate GameSession\n");
+		TerminateGameSession(37);
+	}
+}
+
+void GameLiftManager::TerminateGameSession(int exitCode)
+{
 	mGameSession.reset(); ///< explicitly release
 
 	Aws::GameLift::Server::TerminateGameSession();
@@ -115,25 +133,9 @@ void GameLiftManager::OnProcessTerminate()
 
 	mActivated = false;
 
-	GConsoleLog->PrintOut(true, "[GAMELIFT] OnProcessTerminate Success\n");
+	::TerminateProcess(::GetCurrentProcess(), exitCode);
 }
 
-void GameLiftManager::CheckTerminateGameSession()
-{
-	// accepted full, but no ones here
-	if (mAcceptedCount >= MAX_PLAYER_PER_GAME && mRemovedCount >= MAX_PLAYER_PER_GAME)
-	{
-		GConsoleLog->PrintOut(true, "[GAMELIFT] Terminate GameSession\n");
-
-		mGameSession.reset(); ///< explicitly release
-
-		Aws::GameLift::Server::TerminateGameSession();
-			
-		Aws::GameLift::Server::ProcessEnding();
-		mActivated = false;
-		
-	}
-}
 
 void GameLiftManager::BroadcastMessage(PacketHeader* pkt)
 {

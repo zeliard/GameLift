@@ -21,7 +21,7 @@ IocpManager::~IocpManager()
 {
 }
 
-bool IocpManager::Initialize(u_short listenPort)
+bool IocpManager::Initialize(int& listenPort)
 {
 	/// winsock initializing
 	WSADATA wsa;
@@ -51,6 +51,12 @@ bool IocpManager::Initialize(u_short listenPort)
 	if (SOCKET_ERROR == bind(mListenSocket, (SOCKADDR*)&serveraddr, sizeof(serveraddr)))
 		return false;
 
+	ZeroMemory(&serveraddr, sizeof(serveraddr));
+	int len = sizeof(serveraddr);
+	if (SOCKET_ERROR == getsockname(mListenSocket, (SOCKADDR*)&serveraddr, &len))
+		return false;
+
+	listenPort = ntohs(serveraddr.sin_port);
 	return true;
 }
 

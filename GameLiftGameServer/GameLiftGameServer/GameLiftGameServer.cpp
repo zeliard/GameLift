@@ -33,9 +33,10 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 int main(int argc, char* argv[])
 {
-	int portNum = 9001;
+	int portNum = 0;
+	/// listen port override rather than dynamic port by OS
 	if (argc < 2)
-		printf_s("Specify Listen Port Number\n");
+		printf_s("Specify Listen Port Number. Or, it will be used dynamic port by OS\n");
 	else
 		portNum = atoi(argv[1]);
 
@@ -53,11 +54,11 @@ int main(int argc, char* argv[])
 	/// Global Managers
 	GIocpManager.reset(new IocpManager);
 
-	/// Gamelift init/start!
-	if (false == GGameLiftManager->InitializeGameLift(portNum))
+	if (false == GIocpManager->Initialize(portNum))
 		return -1;
 
-	if (false == GIocpManager->Initialize(static_cast<u_short>(portNum)))
+	/// Gamelift init/start!
+	if (false == GGameLiftManager->InitializeGameLift(portNum))
 		return -1;
 
 	if (false == GIocpManager->StartIoThreads())

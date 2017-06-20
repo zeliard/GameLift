@@ -16,7 +16,7 @@ public:
 	IocpManager();
 	~IocpManager();
 
-	bool Initialize(u_short listenPort);
+	bool Initialize(int& listenPort);
 	void Finalize();
 
 	bool StartIoThreads();

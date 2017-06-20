@@ -28,6 +28,7 @@ public:
 	
 private:
 	void CheckTerminateGameSession();
+	void TerminateGameSession(int exitCode);
 
 private:
 	FastSpinlock mLock;
