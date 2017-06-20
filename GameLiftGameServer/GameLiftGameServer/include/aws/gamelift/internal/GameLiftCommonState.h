@@ -18,14 +18,6 @@ namespace Aws
 {
 namespace GameLift
 {
-namespace Model
-{
-    class Fleet;
-} //namespace Model
-} //namespace GameLift
-
-namespace GameLift
-{
 namespace Internal
 {
     enum class GAMELIFT_INTERNAL_STATE_TYPE {

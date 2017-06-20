@@ -28,17 +28,17 @@ namespace Model
     };
 
 namespace PlayerSessionCreationPolicyMapper {
-
-inline AWS_GAMELIFT_API PlayerSessionCreationPolicy GetPlayerSessionCreationPolicyForName(const std::string& name)
-{
-    if (name == "ACCEPT_ALL") {
-       return PlayerSessionCreationPolicy::ACCEPT_ALL;
+#ifdef GAMELIFT_USE_STD
+    inline AWS_GAMELIFT_API PlayerSessionCreationPolicy GetPlayerSessionCreationPolicyForName(const std::string& name)
+    {
+        if (name == "ACCEPT_ALL") {
+           return PlayerSessionCreationPolicy::ACCEPT_ALL;
+        }
+        if (name == "DENY_ALL") {
+            return PlayerSessionCreationPolicy::DENY_ALL;
+        }
+        return PlayerSessionCreationPolicy::NOT_SET;
     }
-    if (name == "DENY_ALL") {
-        return PlayerSessionCreationPolicy::DENY_ALL;
-    }
-    return PlayerSessionCreationPolicy::NOT_SET;
-}
 
     inline AWS_GAMELIFT_API std::string GetNameForPlayerSessionCreationPolicy(PlayerSessionCreationPolicy value)
     {
@@ -51,6 +51,30 @@ inline AWS_GAMELIFT_API PlayerSessionCreationPolicy GetPlayerSessionCreationPoli
         return "NOT_SET";
     }
     }
+#else
+    inline AWS_GAMELIFT_API PlayerSessionCreationPolicy GetPlayerSessionCreationPolicyForName(const char* name)
+    {
+        if (strcmp(name, "ACCEPT_ALL") == 0) {
+            return PlayerSessionCreationPolicy::ACCEPT_ALL;
+        }
+        if (strcmp(name, "DENY_ALL") == 0) {
+            return PlayerSessionCreationPolicy::DENY_ALL;
+        }
+        return PlayerSessionCreationPolicy::NOT_SET;
+    }
+
+    inline AWS_GAMELIFT_API const char* GetNameForPlayerSessionCreationPolicy(PlayerSessionCreationPolicy value)
+    {
+        switch (value) {
+        case PlayerSessionCreationPolicy::ACCEPT_ALL:
+            return "ACCEPT_ALL";
+        case PlayerSessionCreationPolicy::DENY_ALL:
+            return "DENY_ALL";
+        default:
+            return "NOT_SET";
+        }
+    }
+#endif
 } // namespace PlayerSessionCreationPolicyMapper
 } // namespace Model
 } // namespace Server

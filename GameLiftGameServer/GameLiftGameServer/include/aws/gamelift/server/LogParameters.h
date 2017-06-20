@@ -10,7 +10,17 @@
 *
 */
 #pragma once
+
 #include <aws/gamelift/common/GameLift_EXPORTS.h>
+
+#ifndef GAMELIFT_USE_STD
+    #ifndef MAX_LOG_PATHS
+        #define MAX_LOG_PATHS 10
+    #endif
+    #ifndef MAX_PATH_LENGTH
+        #define MAX_PATH_LENGTH 1024
+    #endif
+#endif
 
 namespace Aws
 {
@@ -20,6 +30,7 @@ namespace Server
 {
     class LogParameters
     {
+#ifdef GAMELIFT_USE_STD
     public:
         AWS_GAMELIFT_API LogParameters() {}
         AWS_GAMELIFT_API LogParameters(const std::vector<std::string> &logPaths) : m_logPaths(logPaths){}
@@ -29,6 +40,19 @@ namespace Server
     private:
         std::vector<std::string> m_logPaths;
     };
+#else
+    public:
+        AWS_GAMELIFT_API LogParameters() : m_count(0) {}
+        AWS_GAMELIFT_API LogParameters(const char** logPaths, int count);
+
+        AWS_GAMELIFT_API int getLogPathCount() const { return m_count; }
+        AWS_GAMELIFT_API const char* getLogPath(int index) const { return index < m_count ? m_logPaths[index] : nullptr; }
+
+    private:
+        char m_logPaths[MAX_LOG_PATHS][MAX_PATH_LENGTH];
+        int m_count;
+    };
+#endif
 } // namespace Server
 } // namespace GameLift
 } // namespace Aws

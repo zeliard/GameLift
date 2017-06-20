@@ -11,6 +11,7 @@
 */
 #pragma once
 #include <aws/gamelift/common/GameLiftErrors.h>
+#include <aws/gamelift/server/model/DescribePlayerSessionsResult.h>
 #include <future>
 
 namespace Aws
@@ -26,6 +27,7 @@ namespace Aws
         template<typename R, typename E> // Result, Error
         class Outcome
         {
+#ifdef GAMELIFT_USE_STD
         public:
 
             Outcome() : success(false)
@@ -119,5 +121,68 @@ namespace Aws
         typedef Outcome<void*, GameLiftError> GenericOutcome;
         typedef std::future<GenericOutcome> GenericOutcomeCallable;
         typedef Outcome<std::string, GameLiftError> AwsStringOutcome;
+        typedef Outcome<Aws::GameLift::Server::Model::DescribePlayerSessionsResult, GameLiftError> DescribePlayerSessionsOutcome;
+#else
+        public:
+
+            Outcome() : success(false)
+            {
+            } // Default constructor
+            Outcome(const R& r) : result(r), success(true)
+            {
+            } // Result copy constructor
+            Outcome(const E& e) : error(e), success(false)
+            {
+            } // Error copy constructor
+
+            Outcome(const Outcome& o) :
+                result(o.result),
+                error(o.error),
+                success(o.success)
+            {
+            }
+
+            Outcome& operator=(const Outcome& o)
+            {
+                if (this != &o)
+                {
+                    result = o.result;
+                    error = o.error;
+                    success = o.success;
+                }
+
+                return *this;
+            }
+
+            inline const R& GetResult() const
+            {
+                return result;
+            }
+
+            inline R& GetResult()
+            {
+                return result;
+            }
+
+            inline const E& GetError() const
+            {
+                return error;
+            }
+
+            inline bool IsSuccess() const
+            {
+                return this->success;
+            }
+
+        private:
+            R result;
+            E error;
+            bool success;
+        };
+
+        typedef Outcome<void*, GameLiftError> GenericOutcome;
+        typedef Outcome<const char*, GameLiftError> AwsStringOutcome;
+        typedef Outcome<Aws::GameLift::Server::Model::DescribePlayerSessionsResult, GameLiftError> DescribePlayerSessionsOutcome;
+#endif
     } // namespace GameLift
 } // namespace Aws

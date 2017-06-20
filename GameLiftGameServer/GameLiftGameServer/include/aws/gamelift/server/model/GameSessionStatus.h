@@ -31,9 +31,13 @@ namespace Model
 
 namespace GameSessionStatusMapper
 {
-AWS_GAMELIFT_API GameSessionStatus GetGameSessionStatusForName(const std::string& name);
-
-AWS_GAMELIFT_API std::string GetNameForGameSessionStatus(GameSessionStatus value);
+#ifdef GAMELIFT_USE_STD
+    AWS_GAMELIFT_API GameSessionStatus GetGameSessionStatusForName(const std::string& name);
+    AWS_GAMELIFT_API std::string GetNameForGameSessionStatus(GameSessionStatus value);
+#else
+    AWS_GAMELIFT_API GameSessionStatus GetGameSessionStatusForName(const char* name);
+    AWS_GAMELIFT_API const char* GetNameForGameSessionStatus(GameSessionStatus value);
+#endif
 } // namespace GameSessionStatusMapper
 } // namespace Model
 } // namespace Server

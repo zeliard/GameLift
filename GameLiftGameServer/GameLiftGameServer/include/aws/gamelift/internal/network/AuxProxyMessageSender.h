@@ -12,12 +12,15 @@
 #pragma once
 
 #include <aws/gamelift/common/Outcome.h>
+#include <aws/gamelift/server/model/DescribePlayerSessionsRequest.h>
 #include <aws/gamelift/server/LogParameters.h>
 #include <google/protobuf/message_lite.h>
 #include <sio_client.h>
+#include <aws/gamelift/server/protocols/sdk.pb.h>
 #ifdef _WIN32
     #include <windows.h>
     #undef ERROR
+    #undef SetPort // See http://answers.perforce.com/articles/KB/2638
 #endif
 
 namespace Aws
@@ -28,6 +31,9 @@ namespace Internal
 {
 namespace Network
 {
+    using namespace Aws::GameLift::Server::Model;
+    using namespace com::amazon::whitewater::auxproxy;
+
     class AuxProxyMessageSender
     {
     public:
@@ -40,10 +46,13 @@ namespace Network
         GenericOutcome UpdatePlayerSessionCreationPolicy(std::string gameSessionId, std::string newPlayerSessionPolicy);
         GenericOutcome AcceptPlayerSession(std::string playerSessionId, std::string gameSessionId);
         GenericOutcome RemovePlayerSession(std::string playerSessionId, std::string gameSessionId);
+        DescribePlayerSessionsOutcome DescribePlayerSessions(const DescribePlayerSessionsRequest &describePlayerSessionsRequest);
         GenericOutcome ReportHealth(bool healthStatus);
     private:
         std::shared_ptr<std::string> ParseMessage(google::protobuf::MessageLite* message);
         GenericOutcome EmitEvent(google::protobuf::MessageLite* message);
+        DescribePlayerSessionsOutcome Call(pbuffer::DescribePlayerSessionsRequest* message);
+        void Send(google::protobuf::MessageLite* message, std::function<void(sio::message::list const&)> ackFunction);
 
         sio::client* m_sio_client;
         std::mutex m_lock;
