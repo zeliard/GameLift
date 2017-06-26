@@ -15,6 +15,25 @@
 #include <aws/gamelift/server/model/PlayerSessionCreationPolicy.h>
 #include <aws/gamelift/server/model/GameProperty.h>
 
+
+#ifndef GAMELIFT_USE_STD
+    #ifndef MAX_GAME_PROPERTIES
+        #define MAX_GAME_PROPERTIES 32
+    #endif
+    #ifndef MAX_IP_LENGTH
+        #define MAX_IP_LENGTH 45
+    #endif
+    #ifndef MAX_SESSION_ID_LENGTH
+        #define MAX_SESSION_ID_LENGTH 256
+    #endif
+    #ifndef MAX_SESSION_NAME_LENGTH
+        #define MAX_SESSION_NAME_LENGTH 256
+    #endif
+    #ifndef MAX_FLEET_ID_LENGTH
+        #define MAX_FLEET_ID_LENGTH 1024
+    #endif
+#endif
+
 namespace Aws
 {
 namespace GameLift
@@ -29,6 +48,7 @@ namespace Model
     */
     class AWS_GAMELIFT_API GameSession
     {
+#ifdef GAMELIFT_USE_STD
     public:
         GameSession() :
             m_maximumPlayerSessionCount(0),
@@ -296,6 +316,173 @@ namespace Model
         std::vector<GameProperty> m_gameProperties;
         std::string m_ipAddress;
         int m_port;
+#else
+    public:
+        GameSession() :
+            m_maximumPlayerSessionCount(0),
+            m_port(0), 
+			m_gameProperties_count(0)
+        { }
+
+        /**
+        * <p>Unique identifier for a game session.</p>
+        */
+        inline const char* GetGameSessionId() const{ return m_gameSessionId; }
+
+        /**
+        * <p>Unique identifier for a game session.</p>
+        */
+        inline void SetGameSessionId(const char* value) { strcpy(m_gameSessionId, value); }
+
+        /**
+        * <p>Unique identifier for a game session.</p>
+        */
+        inline GameSession& WithGameSessionId(const char* value) { SetGameSessionId(value); return *this; }
+
+        /**
+        * <p>Descriptive label associated with a game session. Session names do not need
+        * to be unique.</p>
+        */
+        inline const char* GetName() const{ return m_name; }
+
+        /**
+        * <p>Descriptive label associated with a game session. Session names do not need
+        * to be unique.</p>
+        */
+        inline void SetName(const char* value) { strcpy(m_name, value); }
+
+        /**
+        * <p>Descriptive label associated with a game session. Session names do not need
+        * to be unique.</p>
+        */
+        inline GameSession& WithName(const char* value) { SetName(value); return *this; }
+
+        /**
+        * <p>Unique identifier for a fleet.</p>
+        */
+        inline const char* GetFleetId() const{ return m_fleetId; }
+
+        /**
+        * <p>Unique identifier for a fleet.</p>
+        */
+        inline void SetFleetId(const char* value) { strcpy(m_fleetId, value); }
+
+        /**
+        * <p>Unique identifier for a fleet.</p>
+        */
+        inline GameSession& WithFleetId(const char* value) { SetFleetId(value); return *this; }
+
+        /**
+        * <p>Maximum number of players allowed in the game session.</p>
+        */
+        inline int GetMaximumPlayerSessionCount() const{ return m_maximumPlayerSessionCount; }
+
+        /**
+        * <p>Maximum number of players allowed in the game session.</p>
+        */
+        inline void SetMaximumPlayerSessionCount(int value) { m_maximumPlayerSessionCount = value; }
+
+        /**
+        * <p>Maximum number of players allowed in the game session.</p>
+        */
+        inline GameSession& WithMaximumPlayerSessionCount(int value) { SetMaximumPlayerSessionCount(value); return *this; }
+
+        /**
+        * <p>Current status of the game session. A game session must be in an
+        * <code>ACTIVE</code> state to have player sessions.</p>
+        */
+        inline const GameSessionStatus& GetStatus() const{ return m_status; }
+
+        /**
+        * <p>Current status of the game session. A game session must be in an
+        * <code>ACTIVE</code> state to have player sessions.</p>
+        */
+        inline void SetStatus(const GameSessionStatus& value) { m_status = value; }
+
+        /**
+        * <p>Current status of the game session. A game session must be in an
+        * <code>ACTIVE</code> state to have player sessions.</p>
+        */
+        inline void SetStatus(GameSessionStatus&& value) { m_status = value; }
+
+        /**
+        * <p>Current status of the game session. A game session must be in an
+        * <code>ACTIVE</code> state to have player sessions.</p>
+        */
+        inline GameSession& WithStatus(const GameSessionStatus& value) { SetStatus(value); return *this; }
+
+        /**
+        * <p>Current status of the game session. A game session must be in an
+        * <code>ACTIVE</code> state to have player sessions.</p>
+        */
+        inline GameSession& WithStatus(GameSessionStatus&& value) { SetStatus(value); return *this; }
+
+        /**
+        * <p>Get the custom properties for the game session.</p>
+        */
+        inline const GameProperty* GetGameProperties(int& count) const{ count = m_gameProperties_count; return m_gameProperties; }
+
+        /**
+        * <p>Set of custom property for the game session.</p>
+        */
+        inline void AddGameProperty(GameProperty gameProperty) {
+            if (m_gameProperties_count < MAX_GAME_PROPERTIES) {
+                m_gameProperties[m_gameProperties_count++] = gameProperty;
+            }
+        };
+
+        /**
+        * <p>Set of custom properties for the game session.</p>
+        */
+        inline GameSession& WithGameProperty(GameProperty gameProperty) { AddGameProperty(gameProperty); return *this; }
+
+        /**
+        * <p>IP address of the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline const char* GetIpAddress() const{ return m_ipAddress; }
+
+        /**
+        * <p>IP address of the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline void SetIpAddress(const char* value) { strcpy(m_ipAddress, value); }
+
+        /**
+        * <p>IP address of the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline GameSession& WithIpAddress(const char* value) { SetIpAddress(value); return *this; }
+
+        /**
+        * <p>Port number for the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline int GetPort() const{ return m_port; }
+
+        /**
+        * <p>Port number for the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline void SetPort(int value) { m_port = value; }
+
+        /**
+        * <p>Port number for the game session. To connect to a GameLift server process, an
+        * app needs both the IP address and port number.</p>
+        */
+        inline GameSession& WithPort(int value) { SetPort(value); return *this; }
+
+    private:
+        char m_gameSessionId[MAX_SESSION_ID_LENGTH];
+        char m_name[MAX_SESSION_NAME_LENGTH];
+        char m_fleetId[MAX_FLEET_ID_LENGTH];
+        int m_maximumPlayerSessionCount;
+        GameSessionStatus m_status;
+        GameProperty m_gameProperties[MAX_GAME_PROPERTIES];
+        int m_gameProperties_count;
+        char m_ipAddress[MAX_IP_LENGTH];
+        int m_port;
+#endif
     };
 
 } // namespace Model

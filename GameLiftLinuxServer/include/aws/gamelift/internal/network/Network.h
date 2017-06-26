@@ -12,8 +12,11 @@
 #pragma once
 #include <aws/gamelift/internal/network/AuxProxyMessageHandler.h>
 #include <aws/gamelift/internal/network/AuxProxyMessageSender.h>
-#include <sio_client.h>
 #include <aws/gamelift/server/protocols/sdk.pb.h>
+#include <sio_client.h>
+#include <condition_variable>
+
+#define MAIN_PID "MAIN_PID"
 
 namespace Aws
 {
@@ -27,6 +30,7 @@ namespace Network
     {
     public:
         Network(sio::client* sioClient, AuxProxyMessageHandler* handler, AuxProxyMessageSender* sender);
+
         ~Network();
 
         void OnConnected();
@@ -44,7 +48,7 @@ namespace Network
         AuxProxyMessageHandler* m_handler;
         AuxProxyMessageSender* m_sender;
 
-        bool m_connect_finish = false;
+        bool m_connect_finish;
         std::mutex m_lock;
         std::condition_variable_any m_cond;
     };

@@ -12,6 +12,15 @@
 #pragma once
 #include <aws/gamelift/common/GameLift_EXPORTS.h>
 
+#ifndef GAMELIFT_USE_STD
+    #ifndef MAX_KEY_LENGTH
+        #define MAX_KEY_LENGTH 256
+    #endif
+    #ifndef MAX_VALUE_LENGTH
+        #define MAX_VALUE_LENGTH 256
+    #endif
+#endif
+
 namespace Aws
 {
 namespace GameLift
@@ -30,6 +39,7 @@ namespace Model
     */
 class AWS_GAMELIFT_API GameProperty
 {
+#ifdef GAMELIFT_USE_STD
 public:
     GameProperty(){}
 
@@ -78,6 +88,36 @@ public:
 private:
     std::string m_key;
     std::string m_value;
+#else
+public:
+    GameProperty()
+    {
+        memset(m_key, 0, MAX_KEY_LENGTH);
+        memset(m_value, 0, MAX_VALUE_LENGTH);
+    }
+
+
+    inline const char* GetKey() const{ return m_key; }
+
+
+    inline void SetKey(const char* value) { strcpy(m_key, value); }
+
+
+    inline GameProperty& WithKey(const char* value) { SetKey(value); return *this; }
+
+
+    inline const char* GetValue() const{ return m_value; }
+
+
+    inline void SetValue(const char* value) { strcpy(m_value, value); }
+
+
+    inline GameProperty& WithValue(const char* value) { SetValue(value); return *this; }
+
+private:
+    char m_key[MAX_KEY_LENGTH];
+    char m_value[MAX_VALUE_LENGTH];
+#endif
 };
 
 } // namespace Model

@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 project(GameLiftLinuxServer)
 
 add_definitions(-std=c++11)
-
+add_definitions(-DGAMELIFT_USE_STD)
 include_directories(include)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 

@@ -44,10 +44,13 @@ void protobuf_ShutdownFile_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
 
 class AcceptPlayerSession;
 class ActivateGameSession;
+class DescribePlayerSessionsRequest;
+class DescribePlayerSessionsResponse;
 class GameProperty;
 class GameSession;
 class GameSessionActivate;
 class GameSessionTerminate;
+class PlayerSession;
 class ProcessEnding;
 class ProcessReady;
 class RemovePlayerSession;
@@ -1557,6 +1560,518 @@ class GameProperty : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 extern ::google::protobuf::internal::ExplicitlyConstructed<GameProperty> GameProperty_default_instance_;
 
+// -------------------------------------------------------------------
+
+class PlayerSession : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession) */ {
+ public:
+  PlayerSession();
+  virtual ~PlayerSession();
+
+  PlayerSession(const PlayerSession& from);
+
+  inline PlayerSession& operator=(const PlayerSession& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayerSession& default_instance();
+
+  static const PlayerSession* internal_default_instance();
+
+  void Swap(PlayerSession* other);
+
+  // implements Message ----------------------------------------------
+
+  inline PlayerSession* New() const { return New(NULL); }
+
+  PlayerSession* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayerSession& from);
+  void MergeFrom(const PlayerSession& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  size_t ByteSizeLong() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(PlayerSession* other);
+  void UnsafeMergeFrom(const PlayerSession& from);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string playerSessionId = 1;
+  bool has_playersessionid() const;
+  void clear_playersessionid();
+  static const int kPlayerSessionIdFieldNumber = 1;
+  const ::std::string& playersessionid() const;
+  void set_playersessionid(const ::std::string& value);
+  void set_playersessionid(const char* value);
+  void set_playersessionid(const char* value, size_t size);
+  ::std::string* mutable_playersessionid();
+  ::std::string* release_playersessionid();
+  void set_allocated_playersessionid(::std::string* playersessionid);
+
+  // optional string playerId = 2;
+  bool has_playerid() const;
+  void clear_playerid();
+  static const int kPlayerIdFieldNumber = 2;
+  const ::std::string& playerid() const;
+  void set_playerid(const ::std::string& value);
+  void set_playerid(const char* value);
+  void set_playerid(const char* value, size_t size);
+  ::std::string* mutable_playerid();
+  ::std::string* release_playerid();
+  void set_allocated_playerid(::std::string* playerid);
+
+  // optional string gameSessionId = 3;
+  bool has_gamesessionid() const;
+  void clear_gamesessionid();
+  static const int kGameSessionIdFieldNumber = 3;
+  const ::std::string& gamesessionid() const;
+  void set_gamesessionid(const ::std::string& value);
+  void set_gamesessionid(const char* value);
+  void set_gamesessionid(const char* value, size_t size);
+  ::std::string* mutable_gamesessionid();
+  ::std::string* release_gamesessionid();
+  void set_allocated_gamesessionid(::std::string* gamesessionid);
+
+  // optional string fleetId = 4;
+  bool has_fleetid() const;
+  void clear_fleetid();
+  static const int kFleetIdFieldNumber = 4;
+  const ::std::string& fleetid() const;
+  void set_fleetid(const ::std::string& value);
+  void set_fleetid(const char* value);
+  void set_fleetid(const char* value, size_t size);
+  ::std::string* mutable_fleetid();
+  ::std::string* release_fleetid();
+  void set_allocated_fleetid(::std::string* fleetid);
+
+  // optional string ipAddress = 5;
+  bool has_ipaddress() const;
+  void clear_ipaddress();
+  static const int kIpAddressFieldNumber = 5;
+  const ::std::string& ipaddress() const;
+  void set_ipaddress(const ::std::string& value);
+  void set_ipaddress(const char* value);
+  void set_ipaddress(const char* value, size_t size);
+  ::std::string* mutable_ipaddress();
+  ::std::string* release_ipaddress();
+  void set_allocated_ipaddress(::std::string* ipaddress);
+
+  // optional string status = 6;
+  bool has_status() const;
+  void clear_status();
+  static const int kStatusFieldNumber = 6;
+  const ::std::string& status() const;
+  void set_status(const ::std::string& value);
+  void set_status(const char* value);
+  void set_status(const char* value, size_t size);
+  ::std::string* mutable_status();
+  ::std::string* release_status();
+  void set_allocated_status(::std::string* status);
+
+  // optional int64 creationTime = 7;
+  bool has_creationtime() const;
+  void clear_creationtime();
+  static const int kCreationTimeFieldNumber = 7;
+  ::google::protobuf::int64 creationtime() const;
+  void set_creationtime(::google::protobuf::int64 value);
+
+  // optional int64 terminationTime = 8;
+  bool has_terminationtime() const;
+  void clear_terminationtime();
+  static const int kTerminationTimeFieldNumber = 8;
+  ::google::protobuf::int64 terminationtime() const;
+  void set_terminationtime(::google::protobuf::int64 value);
+
+  // optional int32 port = 9;
+  bool has_port() const;
+  void clear_port();
+  static const int kPortFieldNumber = 9;
+  ::google::protobuf::int32 port() const;
+  void set_port(::google::protobuf::int32 value);
+
+  // optional string playerData = 10;
+  bool has_playerdata() const;
+  void clear_playerdata();
+  static const int kPlayerDataFieldNumber = 10;
+  const ::std::string& playerdata() const;
+  void set_playerdata(const ::std::string& value);
+  void set_playerdata(const char* value);
+  void set_playerdata(const char* value, size_t size);
+  ::std::string* mutable_playerdata();
+  ::std::string* release_playerdata();
+  void set_allocated_playerdata(::std::string* playerdata);
+
+  // @@protoc_insertion_point(class_scope:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession)
+ private:
+  inline void set_has_playersessionid();
+  inline void clear_has_playersessionid();
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+  inline void set_has_gamesessionid();
+  inline void clear_has_gamesessionid();
+  inline void set_has_fleetid();
+  inline void clear_has_fleetid();
+  inline void set_has_ipaddress();
+  inline void clear_has_ipaddress();
+  inline void set_has_status();
+  inline void clear_has_status();
+  inline void set_has_creationtime();
+  inline void clear_has_creationtime();
+  inline void set_has_terminationtime();
+  inline void clear_has_terminationtime();
+  inline void set_has_port();
+  inline void clear_has_port();
+  inline void set_has_playerdata();
+  inline void clear_has_playerdata();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr playersessionid_;
+  ::google::protobuf::internal::ArenaStringPtr playerid_;
+  ::google::protobuf::internal::ArenaStringPtr gamesessionid_;
+  ::google::protobuf::internal::ArenaStringPtr fleetid_;
+  ::google::protobuf::internal::ArenaStringPtr ipaddress_;
+  ::google::protobuf::internal::ArenaStringPtr status_;
+  ::google::protobuf::internal::ArenaStringPtr playerdata_;
+  ::google::protobuf::int64 creationtime_;
+  ::google::protobuf::int64 terminationtime_;
+  ::google::protobuf::int32 port_;
+  friend void  protobuf_InitDefaults_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void  protobuf_AddDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void protobuf_AssignDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+  friend void protobuf_ShutdownFile_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+
+  void InitAsDefaultInstance();
+};
+extern ::google::protobuf::internal::ExplicitlyConstructed<PlayerSession> PlayerSession_default_instance_;
+
+// -------------------------------------------------------------------
+
+class DescribePlayerSessionsRequest : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest) */ {
+ public:
+  DescribePlayerSessionsRequest();
+  virtual ~DescribePlayerSessionsRequest();
+
+  DescribePlayerSessionsRequest(const DescribePlayerSessionsRequest& from);
+
+  inline DescribePlayerSessionsRequest& operator=(const DescribePlayerSessionsRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DescribePlayerSessionsRequest& default_instance();
+
+  static const DescribePlayerSessionsRequest* internal_default_instance();
+
+  void Swap(DescribePlayerSessionsRequest* other);
+
+  // implements Message ----------------------------------------------
+
+  inline DescribePlayerSessionsRequest* New() const { return New(NULL); }
+
+  DescribePlayerSessionsRequest* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DescribePlayerSessionsRequest& from);
+  void MergeFrom(const DescribePlayerSessionsRequest& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  size_t ByteSizeLong() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DescribePlayerSessionsRequest* other);
+  void UnsafeMergeFrom(const DescribePlayerSessionsRequest& from);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string gameSessionId = 1;
+  bool has_gamesessionid() const;
+  void clear_gamesessionid();
+  static const int kGameSessionIdFieldNumber = 1;
+  const ::std::string& gamesessionid() const;
+  void set_gamesessionid(const ::std::string& value);
+  void set_gamesessionid(const char* value);
+  void set_gamesessionid(const char* value, size_t size);
+  ::std::string* mutable_gamesessionid();
+  ::std::string* release_gamesessionid();
+  void set_allocated_gamesessionid(::std::string* gamesessionid);
+
+  // optional string playerId = 2;
+  bool has_playerid() const;
+  void clear_playerid();
+  static const int kPlayerIdFieldNumber = 2;
+  const ::std::string& playerid() const;
+  void set_playerid(const ::std::string& value);
+  void set_playerid(const char* value);
+  void set_playerid(const char* value, size_t size);
+  ::std::string* mutable_playerid();
+  ::std::string* release_playerid();
+  void set_allocated_playerid(::std::string* playerid);
+
+  // optional string playerSessionId = 3;
+  bool has_playersessionid() const;
+  void clear_playersessionid();
+  static const int kPlayerSessionIdFieldNumber = 3;
+  const ::std::string& playersessionid() const;
+  void set_playersessionid(const ::std::string& value);
+  void set_playersessionid(const char* value);
+  void set_playersessionid(const char* value, size_t size);
+  ::std::string* mutable_playersessionid();
+  ::std::string* release_playersessionid();
+  void set_allocated_playersessionid(::std::string* playersessionid);
+
+  // optional string playerSessionStatusFilter = 4;
+  bool has_playersessionstatusfilter() const;
+  void clear_playersessionstatusfilter();
+  static const int kPlayerSessionStatusFilterFieldNumber = 4;
+  const ::std::string& playersessionstatusfilter() const;
+  void set_playersessionstatusfilter(const ::std::string& value);
+  void set_playersessionstatusfilter(const char* value);
+  void set_playersessionstatusfilter(const char* value, size_t size);
+  ::std::string* mutable_playersessionstatusfilter();
+  ::std::string* release_playersessionstatusfilter();
+  void set_allocated_playersessionstatusfilter(::std::string* playersessionstatusfilter);
+
+  // optional string nextToken = 5;
+  bool has_nexttoken() const;
+  void clear_nexttoken();
+  static const int kNextTokenFieldNumber = 5;
+  const ::std::string& nexttoken() const;
+  void set_nexttoken(const ::std::string& value);
+  void set_nexttoken(const char* value);
+  void set_nexttoken(const char* value, size_t size);
+  ::std::string* mutable_nexttoken();
+  ::std::string* release_nexttoken();
+  void set_allocated_nexttoken(::std::string* nexttoken);
+
+  // optional int32 limit = 6;
+  bool has_limit() const;
+  void clear_limit();
+  static const int kLimitFieldNumber = 6;
+  ::google::protobuf::int32 limit() const;
+  void set_limit(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest)
+ private:
+  inline void set_has_gamesessionid();
+  inline void clear_has_gamesessionid();
+  inline void set_has_playerid();
+  inline void clear_has_playerid();
+  inline void set_has_playersessionid();
+  inline void clear_has_playersessionid();
+  inline void set_has_playersessionstatusfilter();
+  inline void clear_has_playersessionstatusfilter();
+  inline void set_has_nexttoken();
+  inline void clear_has_nexttoken();
+  inline void set_has_limit();
+  inline void clear_has_limit();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::internal::ArenaStringPtr gamesessionid_;
+  ::google::protobuf::internal::ArenaStringPtr playerid_;
+  ::google::protobuf::internal::ArenaStringPtr playersessionid_;
+  ::google::protobuf::internal::ArenaStringPtr playersessionstatusfilter_;
+  ::google::protobuf::internal::ArenaStringPtr nexttoken_;
+  ::google::protobuf::int32 limit_;
+  friend void  protobuf_InitDefaults_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void  protobuf_AddDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void protobuf_AssignDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+  friend void protobuf_ShutdownFile_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+
+  void InitAsDefaultInstance();
+};
+extern ::google::protobuf::internal::ExplicitlyConstructed<DescribePlayerSessionsRequest> DescribePlayerSessionsRequest_default_instance_;
+
+// -------------------------------------------------------------------
+
+class DescribePlayerSessionsResponse : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse) */ {
+ public:
+  DescribePlayerSessionsResponse();
+  virtual ~DescribePlayerSessionsResponse();
+
+  DescribePlayerSessionsResponse(const DescribePlayerSessionsResponse& from);
+
+  inline DescribePlayerSessionsResponse& operator=(const DescribePlayerSessionsResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DescribePlayerSessionsResponse& default_instance();
+
+  static const DescribePlayerSessionsResponse* internal_default_instance();
+
+  void Swap(DescribePlayerSessionsResponse* other);
+
+  // implements Message ----------------------------------------------
+
+  inline DescribePlayerSessionsResponse* New() const { return New(NULL); }
+
+  DescribePlayerSessionsResponse* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DescribePlayerSessionsResponse& from);
+  void MergeFrom(const DescribePlayerSessionsResponse& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  size_t ByteSizeLong() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DescribePlayerSessionsResponse* other);
+  void UnsafeMergeFrom(const DescribePlayerSessionsResponse& from);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string nextToken = 1;
+  bool has_nexttoken() const;
+  void clear_nexttoken();
+  static const int kNextTokenFieldNumber = 1;
+  const ::std::string& nexttoken() const;
+  void set_nexttoken(const ::std::string& value);
+  void set_nexttoken(const char* value);
+  void set_nexttoken(const char* value, size_t size);
+  ::std::string* mutable_nexttoken();
+  ::std::string* release_nexttoken();
+  void set_allocated_nexttoken(::std::string* nexttoken);
+
+  // repeated .com.amazon.whitewater.auxproxy.pbuffer.PlayerSession playerSessions = 2;
+  int playersessions_size() const;
+  void clear_playersessions();
+  static const int kPlayerSessionsFieldNumber = 2;
+  const ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession& playersessions(int index) const;
+  ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession* mutable_playersessions(int index);
+  ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession* add_playersessions();
+  ::google::protobuf::RepeatedPtrField< ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession >*
+      mutable_playersessions();
+  const ::google::protobuf::RepeatedPtrField< ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession >&
+      playersessions() const;
+
+  // @@protoc_insertion_point(class_scope:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse)
+ private:
+  inline void set_has_nexttoken();
+  inline void clear_has_nexttoken();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::internal::HasBits<1> _has_bits_;
+  mutable int _cached_size_;
+  ::google::protobuf::RepeatedPtrField< ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession > playersessions_;
+  ::google::protobuf::internal::ArenaStringPtr nexttoken_;
+  friend void  protobuf_InitDefaults_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void  protobuf_AddDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto_impl();
+  friend void protobuf_AssignDesc_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+  friend void protobuf_ShutdownFile_aws_2fgamelift_2fserver_2fprotocols_2fsdk_2eproto();
+
+  void InitAsDefaultInstance();
+};
+extern ::google::protobuf::internal::ExplicitlyConstructed<DescribePlayerSessionsResponse> DescribePlayerSessionsResponse_default_instance_;
+
 // ===================================================================
 
 
@@ -2683,7 +3198,862 @@ inline void GameProperty::set_allocated_value(::std::string* value) {
 inline const GameProperty* GameProperty::internal_default_instance() {
   return &GameProperty_default_instance_.get();
 }
+// -------------------------------------------------------------------
+
+// PlayerSession
+
+// optional string playerSessionId = 1;
+inline bool PlayerSession::has_playersessionid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PlayerSession::set_has_playersessionid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PlayerSession::clear_has_playersessionid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PlayerSession::clear_playersessionid() {
+  playersessionid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playersessionid();
+}
+inline const ::std::string& PlayerSession::playersessionid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+  return playersessionid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_playersessionid(const ::std::string& value) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+}
+inline void PlayerSession::set_playersessionid(const char* value) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+}
+inline void PlayerSession::set_playersessionid(const char* value, size_t size) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+}
+inline ::std::string* PlayerSession::mutable_playersessionid() {
+  set_has_playersessionid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+  return playersessionid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_playersessionid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+  clear_has_playersessionid();
+  return playersessionid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_playersessionid(::std::string* playersessionid) {
+  if (playersessionid != NULL) {
+    set_has_playersessionid();
+  } else {
+    clear_has_playersessionid();
+  }
+  playersessionid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playersessionid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerSessionId)
+}
+
+// optional string playerId = 2;
+inline bool PlayerSession::has_playerid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PlayerSession::set_has_playerid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PlayerSession::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PlayerSession::clear_playerid() {
+  playerid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playerid();
+}
+inline const ::std::string& PlayerSession::playerid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+  return playerid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+}
+inline void PlayerSession::set_playerid(const char* value) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+}
+inline void PlayerSession::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+}
+inline ::std::string* PlayerSession::mutable_playerid() {
+  set_has_playerid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+  return playerid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_playerid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+  clear_has_playerid();
+  return playerid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_playerid(::std::string* playerid) {
+  if (playerid != NULL) {
+    set_has_playerid();
+  } else {
+    clear_has_playerid();
+  }
+  playerid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playerid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerId)
+}
+
+// optional string gameSessionId = 3;
+inline bool PlayerSession::has_gamesessionid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PlayerSession::set_has_gamesessionid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PlayerSession::clear_has_gamesessionid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PlayerSession::clear_gamesessionid() {
+  gamesessionid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_gamesessionid();
+}
+inline const ::std::string& PlayerSession::gamesessionid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+  return gamesessionid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_gamesessionid(const ::std::string& value) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+}
+inline void PlayerSession::set_gamesessionid(const char* value) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+}
+inline void PlayerSession::set_gamesessionid(const char* value, size_t size) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+}
+inline ::std::string* PlayerSession::mutable_gamesessionid() {
+  set_has_gamesessionid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+  return gamesessionid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_gamesessionid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+  clear_has_gamesessionid();
+  return gamesessionid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_gamesessionid(::std::string* gamesessionid) {
+  if (gamesessionid != NULL) {
+    set_has_gamesessionid();
+  } else {
+    clear_has_gamesessionid();
+  }
+  gamesessionid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), gamesessionid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.gameSessionId)
+}
+
+// optional string fleetId = 4;
+inline bool PlayerSession::has_fleetid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PlayerSession::set_has_fleetid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PlayerSession::clear_has_fleetid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PlayerSession::clear_fleetid() {
+  fleetid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_fleetid();
+}
+inline const ::std::string& PlayerSession::fleetid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+  return fleetid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_fleetid(const ::std::string& value) {
+  set_has_fleetid();
+  fleetid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+}
+inline void PlayerSession::set_fleetid(const char* value) {
+  set_has_fleetid();
+  fleetid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+}
+inline void PlayerSession::set_fleetid(const char* value, size_t size) {
+  set_has_fleetid();
+  fleetid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+}
+inline ::std::string* PlayerSession::mutable_fleetid() {
+  set_has_fleetid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+  return fleetid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_fleetid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+  clear_has_fleetid();
+  return fleetid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_fleetid(::std::string* fleetid) {
+  if (fleetid != NULL) {
+    set_has_fleetid();
+  } else {
+    clear_has_fleetid();
+  }
+  fleetid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), fleetid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.fleetId)
+}
+
+// optional string ipAddress = 5;
+inline bool PlayerSession::has_ipaddress() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PlayerSession::set_has_ipaddress() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PlayerSession::clear_has_ipaddress() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PlayerSession::clear_ipaddress() {
+  ipaddress_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_ipaddress();
+}
+inline const ::std::string& PlayerSession::ipaddress() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+  return ipaddress_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_ipaddress(const ::std::string& value) {
+  set_has_ipaddress();
+  ipaddress_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+}
+inline void PlayerSession::set_ipaddress(const char* value) {
+  set_has_ipaddress();
+  ipaddress_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+}
+inline void PlayerSession::set_ipaddress(const char* value, size_t size) {
+  set_has_ipaddress();
+  ipaddress_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+}
+inline ::std::string* PlayerSession::mutable_ipaddress() {
+  set_has_ipaddress();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+  return ipaddress_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_ipaddress() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+  clear_has_ipaddress();
+  return ipaddress_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_ipaddress(::std::string* ipaddress) {
+  if (ipaddress != NULL) {
+    set_has_ipaddress();
+  } else {
+    clear_has_ipaddress();
+  }
+  ipaddress_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ipaddress);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.ipAddress)
+}
+
+// optional string status = 6;
+inline bool PlayerSession::has_status() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PlayerSession::set_has_status() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PlayerSession::clear_has_status() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void PlayerSession::clear_status() {
+  status_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_status();
+}
+inline const ::std::string& PlayerSession::status() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+  return status_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_status(const ::std::string& value) {
+  set_has_status();
+  status_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+}
+inline void PlayerSession::set_status(const char* value) {
+  set_has_status();
+  status_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+}
+inline void PlayerSession::set_status(const char* value, size_t size) {
+  set_has_status();
+  status_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+}
+inline ::std::string* PlayerSession::mutable_status() {
+  set_has_status();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+  return status_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_status() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+  clear_has_status();
+  return status_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_status(::std::string* status) {
+  if (status != NULL) {
+    set_has_status();
+  } else {
+    clear_has_status();
+  }
+  status_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), status);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.status)
+}
+
+// optional int64 creationTime = 7;
+inline bool PlayerSession::has_creationtime() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void PlayerSession::set_has_creationtime() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void PlayerSession::clear_has_creationtime() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void PlayerSession::clear_creationtime() {
+  creationtime_ = GOOGLE_LONGLONG(0);
+  clear_has_creationtime();
+}
+inline ::google::protobuf::int64 PlayerSession::creationtime() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.creationTime)
+  return creationtime_;
+}
+inline void PlayerSession::set_creationtime(::google::protobuf::int64 value) {
+  set_has_creationtime();
+  creationtime_ = value;
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.creationTime)
+}
+
+// optional int64 terminationTime = 8;
+inline bool PlayerSession::has_terminationtime() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void PlayerSession::set_has_terminationtime() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void PlayerSession::clear_has_terminationtime() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void PlayerSession::clear_terminationtime() {
+  terminationtime_ = GOOGLE_LONGLONG(0);
+  clear_has_terminationtime();
+}
+inline ::google::protobuf::int64 PlayerSession::terminationtime() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.terminationTime)
+  return terminationtime_;
+}
+inline void PlayerSession::set_terminationtime(::google::protobuf::int64 value) {
+  set_has_terminationtime();
+  terminationtime_ = value;
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.terminationTime)
+}
+
+// optional int32 port = 9;
+inline bool PlayerSession::has_port() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void PlayerSession::set_has_port() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void PlayerSession::clear_has_port() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void PlayerSession::clear_port() {
+  port_ = 0;
+  clear_has_port();
+}
+inline ::google::protobuf::int32 PlayerSession::port() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.port)
+  return port_;
+}
+inline void PlayerSession::set_port(::google::protobuf::int32 value) {
+  set_has_port();
+  port_ = value;
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.port)
+}
+
+// optional string playerData = 10;
+inline bool PlayerSession::has_playerdata() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void PlayerSession::set_has_playerdata() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void PlayerSession::clear_has_playerdata() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void PlayerSession::clear_playerdata() {
+  playerdata_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playerdata();
+}
+inline const ::std::string& PlayerSession::playerdata() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+  return playerdata_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_playerdata(const ::std::string& value) {
+  set_has_playerdata();
+  playerdata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+}
+inline void PlayerSession::set_playerdata(const char* value) {
+  set_has_playerdata();
+  playerdata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+}
+inline void PlayerSession::set_playerdata(const char* value, size_t size) {
+  set_has_playerdata();
+  playerdata_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+}
+inline ::std::string* PlayerSession::mutable_playerdata() {
+  set_has_playerdata();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+  return playerdata_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* PlayerSession::release_playerdata() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+  clear_has_playerdata();
+  return playerdata_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void PlayerSession::set_allocated_playerdata(::std::string* playerdata) {
+  if (playerdata != NULL) {
+    set_has_playerdata();
+  } else {
+    clear_has_playerdata();
+  }
+  playerdata_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playerdata);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.PlayerSession.playerData)
+}
+
+inline const PlayerSession* PlayerSession::internal_default_instance() {
+  return &PlayerSession_default_instance_.get();
+}
+// -------------------------------------------------------------------
+
+// DescribePlayerSessionsRequest
+
+// optional string gameSessionId = 1;
+inline bool DescribePlayerSessionsRequest::has_gamesessionid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_gamesessionid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_gamesessionid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DescribePlayerSessionsRequest::clear_gamesessionid() {
+  gamesessionid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_gamesessionid();
+}
+inline const ::std::string& DescribePlayerSessionsRequest::gamesessionid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+  return gamesessionid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_gamesessionid(const ::std::string& value) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+}
+inline void DescribePlayerSessionsRequest::set_gamesessionid(const char* value) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+}
+inline void DescribePlayerSessionsRequest::set_gamesessionid(const char* value, size_t size) {
+  set_has_gamesessionid();
+  gamesessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+}
+inline ::std::string* DescribePlayerSessionsRequest::mutable_gamesessionid() {
+  set_has_gamesessionid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+  return gamesessionid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsRequest::release_gamesessionid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+  clear_has_gamesessionid();
+  return gamesessionid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_allocated_gamesessionid(::std::string* gamesessionid) {
+  if (gamesessionid != NULL) {
+    set_has_gamesessionid();
+  } else {
+    clear_has_gamesessionid();
+  }
+  gamesessionid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), gamesessionid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.gameSessionId)
+}
+
+// optional string playerId = 2;
+inline bool DescribePlayerSessionsRequest::has_playerid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_playerid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_playerid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DescribePlayerSessionsRequest::clear_playerid() {
+  playerid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playerid();
+}
+inline const ::std::string& DescribePlayerSessionsRequest::playerid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+  return playerid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_playerid(const ::std::string& value) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+}
+inline void DescribePlayerSessionsRequest::set_playerid(const char* value) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+}
+inline void DescribePlayerSessionsRequest::set_playerid(const char* value, size_t size) {
+  set_has_playerid();
+  playerid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+}
+inline ::std::string* DescribePlayerSessionsRequest::mutable_playerid() {
+  set_has_playerid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+  return playerid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsRequest::release_playerid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+  clear_has_playerid();
+  return playerid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_allocated_playerid(::std::string* playerid) {
+  if (playerid != NULL) {
+    set_has_playerid();
+  } else {
+    clear_has_playerid();
+  }
+  playerid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playerid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerId)
+}
+
+// optional string playerSessionId = 3;
+inline bool DescribePlayerSessionsRequest::has_playersessionid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_playersessionid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_playersessionid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DescribePlayerSessionsRequest::clear_playersessionid() {
+  playersessionid_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playersessionid();
+}
+inline const ::std::string& DescribePlayerSessionsRequest::playersessionid() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+  return playersessionid_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_playersessionid(const ::std::string& value) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+}
+inline void DescribePlayerSessionsRequest::set_playersessionid(const char* value) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+}
+inline void DescribePlayerSessionsRequest::set_playersessionid(const char* value, size_t size) {
+  set_has_playersessionid();
+  playersessionid_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+}
+inline ::std::string* DescribePlayerSessionsRequest::mutable_playersessionid() {
+  set_has_playersessionid();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+  return playersessionid_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsRequest::release_playersessionid() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+  clear_has_playersessionid();
+  return playersessionid_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_allocated_playersessionid(::std::string* playersessionid) {
+  if (playersessionid != NULL) {
+    set_has_playersessionid();
+  } else {
+    clear_has_playersessionid();
+  }
+  playersessionid_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playersessionid);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionId)
+}
+
+// optional string playerSessionStatusFilter = 4;
+inline bool DescribePlayerSessionsRequest::has_playersessionstatusfilter() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_playersessionstatusfilter() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_playersessionstatusfilter() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DescribePlayerSessionsRequest::clear_playersessionstatusfilter() {
+  playersessionstatusfilter_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_playersessionstatusfilter();
+}
+inline const ::std::string& DescribePlayerSessionsRequest::playersessionstatusfilter() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+  return playersessionstatusfilter_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_playersessionstatusfilter(const ::std::string& value) {
+  set_has_playersessionstatusfilter();
+  playersessionstatusfilter_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+}
+inline void DescribePlayerSessionsRequest::set_playersessionstatusfilter(const char* value) {
+  set_has_playersessionstatusfilter();
+  playersessionstatusfilter_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+}
+inline void DescribePlayerSessionsRequest::set_playersessionstatusfilter(const char* value, size_t size) {
+  set_has_playersessionstatusfilter();
+  playersessionstatusfilter_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+}
+inline ::std::string* DescribePlayerSessionsRequest::mutable_playersessionstatusfilter() {
+  set_has_playersessionstatusfilter();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+  return playersessionstatusfilter_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsRequest::release_playersessionstatusfilter() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+  clear_has_playersessionstatusfilter();
+  return playersessionstatusfilter_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_allocated_playersessionstatusfilter(::std::string* playersessionstatusfilter) {
+  if (playersessionstatusfilter != NULL) {
+    set_has_playersessionstatusfilter();
+  } else {
+    clear_has_playersessionstatusfilter();
+  }
+  playersessionstatusfilter_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), playersessionstatusfilter);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.playerSessionStatusFilter)
+}
+
+// optional string nextToken = 5;
+inline bool DescribePlayerSessionsRequest::has_nexttoken() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_nexttoken() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_nexttoken() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DescribePlayerSessionsRequest::clear_nexttoken() {
+  nexttoken_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_nexttoken();
+}
+inline const ::std::string& DescribePlayerSessionsRequest::nexttoken() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+  return nexttoken_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_nexttoken(const ::std::string& value) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+}
+inline void DescribePlayerSessionsRequest::set_nexttoken(const char* value) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+}
+inline void DescribePlayerSessionsRequest::set_nexttoken(const char* value, size_t size) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+}
+inline ::std::string* DescribePlayerSessionsRequest::mutable_nexttoken() {
+  set_has_nexttoken();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+  return nexttoken_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsRequest::release_nexttoken() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+  clear_has_nexttoken();
+  return nexttoken_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsRequest::set_allocated_nexttoken(::std::string* nexttoken) {
+  if (nexttoken != NULL) {
+    set_has_nexttoken();
+  } else {
+    clear_has_nexttoken();
+  }
+  nexttoken_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), nexttoken);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.nextToken)
+}
+
+// optional int32 limit = 6;
+inline bool DescribePlayerSessionsRequest::has_limit() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void DescribePlayerSessionsRequest::set_has_limit() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void DescribePlayerSessionsRequest::clear_has_limit() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void DescribePlayerSessionsRequest::clear_limit() {
+  limit_ = 0;
+  clear_has_limit();
+}
+inline ::google::protobuf::int32 DescribePlayerSessionsRequest::limit() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.limit)
+  return limit_;
+}
+inline void DescribePlayerSessionsRequest::set_limit(::google::protobuf::int32 value) {
+  set_has_limit();
+  limit_ = value;
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsRequest.limit)
+}
+
+inline const DescribePlayerSessionsRequest* DescribePlayerSessionsRequest::internal_default_instance() {
+  return &DescribePlayerSessionsRequest_default_instance_.get();
+}
+// -------------------------------------------------------------------
+
+// DescribePlayerSessionsResponse
+
+// optional string nextToken = 1;
+inline bool DescribePlayerSessionsResponse::has_nexttoken() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DescribePlayerSessionsResponse::set_has_nexttoken() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DescribePlayerSessionsResponse::clear_has_nexttoken() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DescribePlayerSessionsResponse::clear_nexttoken() {
+  nexttoken_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_nexttoken();
+}
+inline const ::std::string& DescribePlayerSessionsResponse::nexttoken() const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+  return nexttoken_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsResponse::set_nexttoken(const ::std::string& value) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+}
+inline void DescribePlayerSessionsResponse::set_nexttoken(const char* value) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+}
+inline void DescribePlayerSessionsResponse::set_nexttoken(const char* value, size_t size) {
+  set_has_nexttoken();
+  nexttoken_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+}
+inline ::std::string* DescribePlayerSessionsResponse::mutable_nexttoken() {
+  set_has_nexttoken();
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+  return nexttoken_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* DescribePlayerSessionsResponse::release_nexttoken() {
+  // @@protoc_insertion_point(field_release:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+  clear_has_nexttoken();
+  return nexttoken_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void DescribePlayerSessionsResponse::set_allocated_nexttoken(::std::string* nexttoken) {
+  if (nexttoken != NULL) {
+    set_has_nexttoken();
+  } else {
+    clear_has_nexttoken();
+  }
+  nexttoken_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), nexttoken);
+  // @@protoc_insertion_point(field_set_allocated:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.nextToken)
+}
+
+// repeated .com.amazon.whitewater.auxproxy.pbuffer.PlayerSession playerSessions = 2;
+inline int DescribePlayerSessionsResponse::playersessions_size() const {
+  return playersessions_.size();
+}
+inline void DescribePlayerSessionsResponse::clear_playersessions() {
+  playersessions_.Clear();
+}
+inline const ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession& DescribePlayerSessionsResponse::playersessions(int index) const {
+  // @@protoc_insertion_point(field_get:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.playerSessions)
+  return playersessions_.Get(index);
+}
+inline ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession* DescribePlayerSessionsResponse::mutable_playersessions(int index) {
+  // @@protoc_insertion_point(field_mutable:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.playerSessions)
+  return playersessions_.Mutable(index);
+}
+inline ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession* DescribePlayerSessionsResponse::add_playersessions() {
+  // @@protoc_insertion_point(field_add:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.playerSessions)
+  return playersessions_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession >*
+DescribePlayerSessionsResponse::mutable_playersessions() {
+  // @@protoc_insertion_point(field_mutable_list:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.playerSessions)
+  return &playersessions_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::com::amazon::whitewater::auxproxy::pbuffer::PlayerSession >&
+DescribePlayerSessionsResponse::playersessions() const {
+  // @@protoc_insertion_point(field_list:com.amazon.whitewater.auxproxy.pbuffer.DescribePlayerSessionsResponse.playerSessions)
+  return playersessions_;
+}
+
+inline const DescribePlayerSessionsResponse* DescribePlayerSessionsResponse::internal_default_instance() {
+  return &DescribePlayerSessionsResponse_default_instance_.get();
+}
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

@@ -21,10 +21,23 @@ namespace GameLift
 {
 namespace Server
 {
+#ifndef GAMELIFT_USE_STD
+    typedef void(*StartGameSessionFn)(Aws::GameLift::Server::Model::GameSession, void*);
+    typedef void(*ProcessTerminateFn)(void*);
+    typedef bool(*HealthCheckFn)(void*);
+#endif
+
     class ProcessParameters
     {
+#ifdef GAMELIFT_USE_STD
     public:
-        ProcessParameters() {}
+        ProcessParameters() :
+		m_onStartGameSession(nullptr),
+		m_onProcessTerminate(nullptr),
+		m_onHealthCheck(nullptr),
+		m_port(-1),
+		m_logParameters(LogParameters())
+		{}
 
         ProcessParameters(const std::function<void(Aws::GameLift::Server::Model::GameSession)> onStartGameSession,
             const std::function<void()> onProcessTerminate,
@@ -43,11 +56,60 @@ namespace Server
         AWS_GAMELIFT_API Aws::GameLift::Server::LogParameters getLogParameters() const { return m_logParameters; }
 
     private:
-        std::function<void(Aws::GameLift::Server::Model::GameSession)> m_onStartGameSession = nullptr;
-        std::function<void()> m_onProcessTerminate = nullptr;
-        std::function<bool()> m_onHealthCheck = nullptr;
-        int m_port = -1;
-        Aws::GameLift::Server::LogParameters m_logParameters = LogParameters();
+        std::function<void(Aws::GameLift::Server::Model::GameSession)> m_onStartGameSession;
+        std::function<void()> m_onProcessTerminate;
+        std::function<bool()> m_onHealthCheck;
+        int m_port;
+        Aws::GameLift::Server::LogParameters m_logParameters;
+#else
+    public:
+        ProcessParameters() :
+		m_onStartGameSession(nullptr),
+        m_onProcessTerminate(nullptr),
+        m_onHealthCheck(nullptr),
+        m_startGameSessionState(nullptr),
+        m_processTerminateState(nullptr),
+        m_healthCheckState(nullptr),
+		m_port(-1),
+		m_logParameters(LogParameters())
+		{ }
+
+        ProcessParameters(
+            StartGameSessionFn onStartGameSession,
+            void* startGameSessionState,
+            ProcessTerminateFn onProcessTerminate,
+            void* processTerminateState,
+            HealthCheckFn onHealthCheck,
+            void* healthCheckState,
+            int port,
+            const Aws::GameLift::Server::LogParameters logParameters) : m_onStartGameSession(onStartGameSession),
+            m_startGameSessionState(startGameSessionState),
+            m_onProcessTerminate(onProcessTerminate),
+            m_processTerminateState(processTerminateState),
+            m_onHealthCheck(onHealthCheck),
+            m_healthCheckState(healthCheckState),
+            m_port(port),
+            m_logParameters(logParameters){}
+
+        AWS_GAMELIFT_API StartGameSessionFn getOnStartGameSession() const { return m_onStartGameSession; }
+        AWS_GAMELIFT_API void* getStartGameSessionState() const { return m_startGameSessionState; }
+        AWS_GAMELIFT_API ProcessTerminateFn getOnProcessTerminate() const { return m_onProcessTerminate; }
+        AWS_GAMELIFT_API void* getProcessTerminateState() const { return m_processTerminateState; }
+        AWS_GAMELIFT_API HealthCheckFn getOnHealthCheck() const { return m_onHealthCheck; }
+        AWS_GAMELIFT_API void* getHealthCheckState() const { return m_healthCheckState; }
+        AWS_GAMELIFT_API int getPort() const { return m_port; }
+        AWS_GAMELIFT_API Aws::GameLift::Server::LogParameters getLogParameters() const { return m_logParameters; }
+
+    private:
+        StartGameSessionFn m_onStartGameSession;
+        ProcessTerminateFn m_onProcessTerminate;
+        HealthCheckFn m_onHealthCheck;
+        void* m_startGameSessionState;
+        void* m_processTerminateState;
+        void* m_healthCheckState;
+        int m_port;
+        Aws::GameLift::Server::LogParameters m_logParameters;
+#endif
     };
 } // namespace Server
 } // namespace GameLift

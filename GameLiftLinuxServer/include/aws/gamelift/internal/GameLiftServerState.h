@@ -23,13 +23,18 @@ namespace Internal
 {
     using namespace Aws::GameLift::Server::Model;
 
+#ifndef GAMELIFT_USE_STD
+    typedef Outcome<GameLiftServerState*, GameLiftError> InitSDKOutcome;
+#endif
+
     class GameLiftServerState : public GameLiftCommonState, public Network::AuxProxyMessageHandler
     {
+#ifdef GAMELIFT_USE_STD
     public:
 
         static Server::InitSDKOutcome CreateInstance();
 
-        virtual GAMELIFT_INTERNAL_STATE_TYPE GetStateType() { return GAMELIFT_INTERNAL_STATE_TYPE::SERVER; };
+        virtual GAMELIFT_INTERNAL_STATE_TYPE GetStateType() override { return GAMELIFT_INTERNAL_STATE_TYPE::SERVER; };
 
         // Singleton constructors should be private, but we are using a custom allocator that needs to be 
         // able to see them. Don't use these.
@@ -54,6 +59,8 @@ namespace Internal
         GenericOutcome AcceptPlayerSession(const std::string& playerSessionId);
 
         GenericOutcome RemovePlayerSession(const std::string& playerSessionId);
+
+        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest &describePlayerSessionsRequest);
 
         bool IsProcessReady() { return m_processReady; }
 
@@ -82,6 +89,75 @@ namespace Internal
         std::string m_gameSessionId;
 
         Aws::GameLift::Internal::Network::Network* m_network;
+#else
+    public:
+
+        static InitSDKOutcome CreateInstance();
+
+        virtual GAMELIFT_INTERNAL_STATE_TYPE GetStateType() override { return GAMELIFT_INTERNAL_STATE_TYPE::SERVER; };
+
+        // Singleton constructors should be private, but we are using a custom allocator that needs to be 
+        // able to see them. Don't use these.
+        GameLiftServerState();
+
+        ~GameLiftServerState();
+
+        GenericOutcome ProcessReady(const Aws::GameLift::Server::ProcessParameters &processParameters);
+
+        GenericOutcome ProcessEnding();
+
+        GenericOutcome InitializeNetworking();
+
+        GenericOutcome ActivateGameSession();
+
+        GenericOutcome UpdatePlayerSessionCreationPolicy(PlayerSessionCreationPolicy newPlayerSessionPolicy);
+
+        GenericOutcome TerminateGameSession();
+
+        std::string GetGameSessionId();
+
+        GenericOutcome AcceptPlayerSession(const std::string& playerSessionId);
+
+        GenericOutcome RemovePlayerSession(const std::string& playerSessionId);
+
+        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest &describePlayerSessionsRequest);
+
+        bool IsProcessReady() { return m_processReady; }
+
+        //From Network::AuxProxyMessageHandler
+        void OnStartGameSession(GameSession& gameSession, sio::message::list& ack_resp) override;
+        void OnTerminateProcess() override;
+
+    private:
+        bool AssertNetworkInitialized();
+
+        bool CreateSDKDetectionDirectory(std::string dir);
+
+        void WaitForAndPopulateAckResponse(sio::message::list &ack_resp);
+
+        void ReportHealth();
+        void HealthCheck();
+        bool DefaultHealthCheck() { return true; }
+
+        std::function<void(Aws::GameLift::Server::Model::GameSession, void*)> m_onStartGameSession;
+        std::function<void(void*)> m_onProcessTerminate;
+        std::function<bool(void*)> m_onHealthCheck;
+
+        void* m_startGameSessionState;
+        void* m_processTerminateState;
+        void* m_healthCheckState;
+
+        void* startGameSessionState;
+        void* processTerminateState;
+        void* healthCheckState;
+
+        bool m_processReady;
+
+        //Only one game session per process.
+        std::string m_gameSessionId;
+
+        Aws::GameLift::Internal::Network::Network* m_network;
+#endif
     };
 
 } // namespace Internal
