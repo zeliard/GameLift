@@ -20,7 +20,7 @@
 std::unique_ptr<ClientManager> GClientManager(nullptr);
 
 
-bool ClientManager::Initialize(int listenPort)
+bool ClientManager::Initialize(int& listenPort)
 {
 	mListenSocket = socket(AF_INET, SOCK_STREAM, 0);
 	if (mListenSocket < 0)
@@ -57,6 +57,14 @@ bool ClientManager::Initialize(int listenPort)
 	ret = epoll_ctl(mEpollFd, EPOLL_CTL_ADD, mListenSocket, &ev);
 	if (ret < 0)
 		return false;
+
+	memset(&serveraddr, 0, sizeof(sockaddr_in));
+	socklen_t len = sizeof(serveraddr);
+	ret = getsockname(mListenSocket, (sockaddr*)&serveraddr, &len);
+	if (ret < 0)
+		return false;
+
+	listenPort = ntohs(serveraddr.sin_port);
 
 	return true;
 

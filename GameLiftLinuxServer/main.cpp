@@ -9,11 +9,13 @@
 
 int main(int argc, char* argv[])
 {
-	int portNum = 9001;
+	int portNum = 0;
+	/// listen port override rather than dynamic port by OS
 	if (argc < 2)
-		printf("Specify Listen Port Number\n");
+		printf("Specify Listen Port Number. Or, it will be used dynamic port by OS\n");
 	else
 		portNum = atoi(argv[1]);
+
 
 
 	GConsoleLog.reset(new ConsoleLog("./logs/serverLog.txt"));
@@ -25,15 +27,15 @@ int main(int argc, char* argv[])
 	GScheduler.reset(new Scheduler);
 	GClientManager.reset(new ClientManager);
 
+	/// bind and listen
+	if (false == GClientManager->Initialize(portNum))
+		return -1;
+
 	/// Gamelift init/start!
 #ifndef ECHO_MODE
 	if (false == GGameLiftManager->InitializeGameLift(portNum))
 		return -1;
 #endif // !ECHO_MODE
-	
-	/// bind and listen
-	if (false == GClientManager->Initialize(portNum))
-		return -1;
 
 	printf("Server Started...\n");
 
@@ -41,5 +43,5 @@ int main(int argc, char* argv[])
 
 	GGameLiftManager->FinalizeGameLift();
 
-    return 0;
+	return 0;
 }

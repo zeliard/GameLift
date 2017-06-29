@@ -8,7 +8,7 @@ public:
 	ClientManager() : mEpollFd(-1), mListenSocket(-1)
 	{}
 
-	bool Initialize(int listenPort);
+	bool Initialize(int& listenPort);
 
 	std::shared_ptr<ClientSession> CreateClient(SOCKET sock);
 	void DeleteClient(std::shared_ptr<ClientSession> client);
