@@ -4,7 +4,6 @@
 ### Amazon GameLift Deep Dive from Gaming on AWS 2016
 The following presentation explains GameLift features and fundamentals: [Amazon GameLift Deep Dive](GameLift_dist.pdf)
 
-
 ## This repository? 
 This repository consists of four projects: 
  - GameLiftGameServer
@@ -41,6 +40,9 @@ It is easy to build and run GameLiftGameServer and DummyClients. The only prereq
     - Note: when you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME in DummyClients.h
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
  6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, AWS_REGION, and then RUN! (you can login by pressing 'L' key.)
+
+## A Full-Stack Game Sample using GameLift
+The sample code provided in this repository is focused on how to use GameLift features. See [awslabs](https://github.com/awslabs/aws-gamelift-sample) for an example of a real session-based multiplayer game.
 
 ## And...
 Some codes are written in a quick-and-dirty manner. But I plan to continuously improve these (if someone needs :)  
