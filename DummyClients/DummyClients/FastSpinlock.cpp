@@ -21,7 +21,7 @@ void FastSpinlock::EnterLock()
 	
 		UINT uTimerRes = 1;
 		timeBeginPeriod(uTimerRes); 
-		Sleep((DWORD)min(10, nloops));
+		Sleep((DWORD)std::min(10, nloops));
 		timeEndPeriod(uTimerRes);
 	}
 

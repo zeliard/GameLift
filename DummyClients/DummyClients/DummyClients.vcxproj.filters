@@ -144,7 +144,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="config.ini" />
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

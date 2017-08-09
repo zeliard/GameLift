@@ -5,6 +5,8 @@
 
 #pragma once
 
+#define NOMINMAX
+
 #include "targetver.h"
 
 #include <stdio.h>
@@ -25,8 +27,6 @@
 #include <type_traits>
 #include <algorithm>
 #include <functional>
-
-#include <WinBase.h>
 
 
 // TODO: reference additional headers your program requires here

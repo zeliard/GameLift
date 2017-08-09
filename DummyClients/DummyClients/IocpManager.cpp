@@ -43,7 +43,7 @@ bool IocpManager::Initialize()
 	/// set num of I/O threads
 	SYSTEM_INFO si;
 	GetSystemInfo(&si);
-	mIoThreadCount = min(si.dwNumberOfProcessors, MAX_IOTHREAD);
+	mIoThreadCount = si.dwNumberOfProcessors > MAX_IOTHREAD ? MAX_IOTHREAD : si.dwNumberOfProcessors;
 
 	/// winsock initializing
 	WSADATA wsa;
