@@ -6,7 +6,7 @@ class GameSession;
 class GameLiftManager
 {
 public:
-	GameLiftManager(const std::string& alias, const std::string& region);
+	GameLiftManager(const std::string& alias, const std::string& region, const std::string& matchQueue);
 
 	void SetUpAwsClient(const std::string& region);
 	void PrepareGameSessions(int gsCount);
@@ -31,12 +31,19 @@ public:
 		return mRegion;
 	}
 
+	const std::string& GetMatchQueue() const
+	{
+		return mMatchQueueName;
+	}
+
 
 private:
 	std::shared_ptr<Aws::GameLift::GameLiftClient> mGLClient;
 
-	std::string mAliasId;
 	std::string mRegion;
+
+	std::string mAliasId; ///< only used if MatchQueue mode is not enabled.
+	std::string mMatchQueueName; ///< only used when MatchQueue enabled
 
 	std::vector<std::shared_ptr<GameSession>> mGameSessions;
 };

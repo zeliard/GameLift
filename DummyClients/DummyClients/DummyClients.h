@@ -1,11 +1,5 @@
 #pragma once
 
-/// If you want test GameLift Match Queue Functionality, define USE_MATCH_QUEUE
-//#define USE_MATCH_QUEUE
-#define MATCH_QUEUE_NAME	"GameLiftSeoulQueue"
-
-///FYI: GameLift Local Mode does not support Match Queue 
-
 
 /// request sending interval (ms)
 extern int PLAYER_ACTION_INTERVAL;

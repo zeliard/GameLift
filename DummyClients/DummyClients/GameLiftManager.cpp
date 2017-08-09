@@ -11,7 +11,8 @@ GameLiftManager* GGameLiftManager = nullptr;
 
 
 
-GameLiftManager::GameLiftManager(const std::string& alias, const std::string& region) : mAliasId(alias), mRegion(region)
+GameLiftManager::GameLiftManager(const std::string& alias, const std::string& region, const std::string& matchQueue)
+	: mAliasId(alias), mRegion(region), mMatchQueueName(matchQueue)
 {
 }
 

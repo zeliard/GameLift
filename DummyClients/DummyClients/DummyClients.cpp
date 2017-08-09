@@ -26,6 +26,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	const std::string& aliasId = iniReader.Get("config", "ALIAS_ID", "TEST_LOCAL");
 	const std::string& region = iniReader.Get("config", "GAMELIFT_REGION", "127.0.0.1:9080");
+	const std::string& matchQueue = iniReader.Get("config", "MATCH_QUEUE_NAME", "NotUse");
+
 	int maxGameSessionCount = iniReader.GetInteger("config", "MAX_GAME_SESSIONS", 1);
 
 	PLAYER_ACTION_REQUEST = iniReader.GetInteger("config", "PLAYER_ACTION_REQUEST", 60);
@@ -44,7 +46,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	/// Global Managers
 	GIocpManager = new IocpManager;
-	GGameLiftManager = new GameLiftManager(aliasId, region);
+	GGameLiftManager = new GameLiftManager(aliasId, region, matchQueue);
 
 	GGameLiftManager->SetUpAwsClient(region);
 
@@ -58,13 +60,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	printf_s("Start Game Sessions...\n");
 
-#ifdef USE_MATCH_QUEUE
-	GGameLiftManager->LaunchGameSessionPlacement();
-#else
-	GGameLiftManager->LaunchGameSessions();
-#endif
-	
-	
+
+	if (matchQueue == "NotUse")
+		GGameLiftManager->LaunchGameSessions();
+	else
+		GGameLiftManager->LaunchGameSessionPlacement();
+
+
 	/// block here...
 	getchar();
 

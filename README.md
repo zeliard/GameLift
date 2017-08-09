@@ -32,12 +32,12 @@ I received many questions from game developers about GameLift. Major questions w
 As you can see, the facts of the matter are to study GameLift-alone features for their game and they want to know how to use GameLift SDK. So, I have started to make a sample program for better communication with game developers. The goal of this project is to show interactions among a game server, game clients and Gamelift. 
 
 ## How?
-It is easy to build and run GameLiftGameServer and DummyClients. The only prerequisite is Visual Studio 2013.
+It is easy to build and run GameLiftGameServer and DummyClients. The only prerequisite is Visual Studio 2013 or 2015.
  1. Open GameLiftGameServer solution file and then build it.
  2. Upload a GameLiftGameServer binary with affiliated files (dlls, logs in upload folder) by AWS CLI
  3. Create a GameLift Fleet by AWS Console
  4. Open DummyClients solution file and edit config.ini file. set ALIAS_ID, GAMELIFT_REGION and MAX_GAME_SESSIONS
-    - Note: when you want to use [Matchmaking Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): define USE_MATCH_QUEUE and set MATCH_QUEUE_NAME in DummyClients.h
+    - Note: when you want to use [GameSessionPlacement Functionality](http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-client-queues.html): set MATCH_QUEUE_NAME in config.ini
  5. Build DummyClients and run. (AWS credential is required on your PC: environment variables or $HOME/.aws folder)
  6. For Cocos2dxGameClient, edit main.cpp file, set your ALIAS_ID, AWS_REGION, and then RUN! (you can login by pressing 'L' key.)
 

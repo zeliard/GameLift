@@ -142,7 +142,7 @@ bool GameSession::StartGameSessionPlacement()
 	GeneratePlacementId();
 
 	Aws::GameLift::Model::StartGameSessionPlacementRequest req;
-	req.SetGameSessionQueueName(MATCH_QUEUE_NAME);
+	req.SetGameSessionQueueName(GGameLiftManager->GetMatchQueue());
 	req.SetMaximumPlayerSessionCount(MAX_PLAYER_PER_GAME);
 	req.SetPlacementId(mPlacementId);
 
