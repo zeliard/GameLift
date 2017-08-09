@@ -159,7 +159,15 @@ bool GameSession::StartGameSessionPlacement()
 
 		if (status == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
 		{
-			//TODO: 아래 Fulfilled 부분처럼 수정.. 
+			auto gs = outcome.GetResult().GetGameSessionPlacement();
+
+			mGameSessionId = gs.GetGameSessionArn();
+			mIpAddress = gs.GetIpAddress();
+			mPort = gs.GetPort();
+
+			/// change region...
+			GGameLiftManager->SetUpAwsClient(gs.GetGameSessionRegion());
+
 			return true;
 		}
 	}
@@ -182,38 +190,16 @@ bool GameSession::CheckGameSessionPlacement()
 
 			if (gs.GetStatus() == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
 			{
-				//TODO: https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html 
-				// 리전 정보는 파싱하지말고 바로 얻기
-				auto arn = gs.GetGameSessionArn();
-				
-				std::string delim ="::gamesession";
-				std::string region = arn.substr(0, arn.find(delim));
-				region = region.substr(17);
-			
+				mGameSessionId = gs.GetGameSessionArn();
+				mIpAddress = gs.GetIpAddress();
+				mPort = gs.GetPort();
+
 				/// change region...
+				auto region = gs.GetGameSessionRegion();
 				GGameLiftManager->SetUpAwsClient(region);
-				
-				Aws::GameLift::Model::DescribeGameSessionDetailsRequest request;
-				
-				request.SetGameSessionId(arn);
-				auto response = GGameLiftManager->GetAwsClient()->DescribeGameSessionDetails(request);
-				if (response.IsSuccess())
-				{
-					// GameSession Fulfill..
-					auto result = response.GetResult().GetGameSessionDetails();
-					mIpAddress = result[0].GetGameSession().GetIpAddress();
-					mPort = result[0].GetGameSession().GetPort();
-					mGameSessionId = arn;
-				}
-				else
-				{
-					GConsoleLog->PrintOut(true, "%s\n", response.GetError().GetMessageA().c_str());
-					return false;
-				}
 				
 				return true;
 			}
-
 		}
 		else
 		{
