@@ -22,3 +22,36 @@ namespace LoggerUtil
 	LogEvent gLogEvents[MAX_LOG_SIZE];
 	__int64 gCurrentLogIndex = 0;
 }
+
+ConsoleLog::ConsoleLog(const char* filename)
+{
+	mLogFileStream.open(filename, std::ofstream::out);
+}
+
+ConsoleLog::~ConsoleLog()
+{
+	mLogFileStream.close();
+}
+
+void ConsoleLog::PrintOut(bool fileOut, const char* fmt, ...)
+{
+	FastSpinlockGuard lock(mLock);
+
+	char buf[512] = {};
+
+	va_list args;
+	va_start(args, fmt);
+	vsprintf_s(buf, fmt, args);
+	va_end(args);
+
+	printf_s("%s", buf);
+
+	if (fileOut)
+	{
+		mLogFileStream << buf;
+		mLogFileStream.flush();
+	}
+}
+
+ConsoleLog* GConsoleLog = nullptr;
+

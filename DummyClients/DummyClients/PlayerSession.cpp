@@ -37,14 +37,14 @@ bool PlayerSession::PrepareSession()
 
  	if (SOCKET_ERROR == bind(mSocket, (SOCKADDR*)&addr, sizeof(addr)))
  	{
- 		printf_s("PlayerSession::PrepareSession() bind error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "PlayerSession::PrepareSession() bind error: %d\n", GetLastError());
  		return false ;
  	}
 
 	HANDLE handle = CreateIoCompletionPort((HANDLE)mSocket, GIocpManager->GetComletionPort(), (ULONG_PTR)this, 0);
 	if (handle != GIocpManager->GetComletionPort())
 	{
-		printf_s("PlayerSession::PrepareSession() CreateIoCompletionPort error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "PlayerSession::PrepareSession() CreateIoCompletionPort error: %d\n", GetLastError());
 		return false;
 	}
 
@@ -72,7 +72,7 @@ bool PlayerSession::ConnectRequest(const std::string& playerSessionId, int idx)
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(context);
-			printf_s("PlayerSession::ConnectRequest Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(true, "PlayerSession::ConnectRequest Error : %d\n", GetLastError());
 		}
 	}
 
@@ -88,9 +88,9 @@ void PlayerSession::ConnectCompletion()
 		DWORD errCode = GetLastError();
 
 		if (WSAENOTCONN == errCode)
-			printf_s("Connecting a server failed: maybe WSAENOTCONN??\n");
+			GConsoleLog->PrintOut(true, "Connecting a server failed: maybe WSAENOTCONN??\n");
 		else
-			printf_s("SO_UPDATE_CONNECT_CONTEXT failed: %d\n", errCode);
+			GConsoleLog->PrintOut(true, "SO_UPDATE_CONNECT_CONTEXT failed: %d\n", errCode);
 
 		return;
 	}
@@ -98,7 +98,7 @@ void PlayerSession::ConnectCompletion()
 	int opt = 1;
 	if (SOCKET_ERROR == setsockopt(mSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)))
 	{
-		printf_s("[DEBUG] TCP_NODELAY error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "[DEBUG] TCP_NODELAY error: %d\n", GetLastError());
 		CRASH_ASSERT(false);
 		return;
 	}
@@ -106,7 +106,7 @@ void PlayerSession::ConnectCompletion()
 	opt = 0;
 	if (SOCKET_ERROR == setsockopt(mSocket, SOL_SOCKET, SO_RCVBUF, (const char*)&opt, sizeof(int)))
 	{
-		printf_s("[DEBUG] SO_RCVBUF change error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "[DEBUG] SO_RCVBUF change error: %d\n", GetLastError());
 		CRASH_ASSERT(false);
 		return;
 	}
@@ -118,12 +118,12 @@ void PlayerSession::ConnectCompletion()
 
 	if (false == PreRecv())
 	{
-		printf_s("[DEBUG] PreRecv for Server Connection error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "[DEBUG] PreRecv for Server Connection error: %d\n", GetLastError());
 		InterlockedExchange(&mConnected, 0);
 		return;
 	}
 
-	printf_s("[DEBUG] Session established: IP=%s, PORT=%d \n", inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
+	GConsoleLog->PrintOut(true, "[DEBUG] Session established: IP=%s, PORT=%d \n", inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
 
 	/// start a test!
 	StartTest();
@@ -132,7 +132,7 @@ void PlayerSession::ConnectCompletion()
 
 void PlayerSession::OnDisconnect(DisconnectReason dr)
 {
-	printf_s("[DEBUG] Client Disconnected: Reason=%d IP=%s, PORT=%d \n", dr, inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
+	GConsoleLog->PrintOut(true, "[DEBUG] Client Disconnected: Reason=%d IP=%s, PORT=%d \n", dr, inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
 }
 
 void PlayerSession::StartTest()
@@ -155,7 +155,7 @@ void PlayerSession::EndTest()
 
 	PostSend((const char*)&outPacket, outPacket.mSize);
 
-	printf_s("%s requested to end a test\n", outPacket.mPlayerId);
+	GConsoleLog->PrintOut(true, "%s requested to end a test\n", outPacket.mPlayerId);
 }
 
 void PlayerSession::PlayTest()

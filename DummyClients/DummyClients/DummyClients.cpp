@@ -9,7 +9,9 @@
 #include "GameSession.h"
 #include "IocpManager.h"
 #include "GameLiftManager.h"
+#include "Log.h"
 #include "INIReader.h"
+
 
 int PLAYER_ACTION_REQUEST = 0;
 int TEST_PLAYER_SESSION_EXCEPT = 0;
@@ -45,6 +47,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	SetUnhandledExceptionFilter(ExceptionFilter);
 
 	/// Global Managers
+	GConsoleLog = new ConsoleLog(".\\DummyClientsLog.txt");
 	GIocpManager = new IocpManager;
 	GGameLiftManager = new GameLiftManager(aliasId, region, matchQueue);
 
@@ -79,8 +82,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	GIocpManager->Finalize();
 
-
 	Aws::ShutdownAPI(options);
+
+	delete GConsoleLog;
 	return 0;
 }
 

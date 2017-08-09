@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Exception.h"
 #include "ThreadLocal.h"
+#include "FastSpinlock.h"
 
 class ThreadCallHistory
 {
@@ -72,3 +73,18 @@ namespace LoggerUtil
 
 #define EVENT_LOG(x, info) LoggerUtil::EventLog(x, info)
 
+
+class ConsoleLog
+{
+public:
+	ConsoleLog(const char* filename);
+	~ConsoleLog();
+
+	void PrintOut(bool fileOut, const char* fmt, ...);
+
+private:
+	FastSpinlock mLock;
+	std::ofstream mLogFileStream;
+};
+
+extern ConsoleLog* GConsoleLog;

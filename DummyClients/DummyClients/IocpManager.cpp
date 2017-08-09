@@ -63,7 +63,7 @@ bool IocpManager::Initialize()
 	HANDLE handle = CreateIoCompletionPort((HANDLE)sock, mCompletionPort, 0, 0);
 	if (handle != mCompletionPort)
 	{
-		printf_s("[DEBUG] listen socket IOCP register error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(true, "[DEBUG] listen socket IOCP register error: %d\n", GetLastError());
 		return false;
 	}
 
@@ -117,7 +117,7 @@ void IocpManager::StopIoThreads()
 	{
 		if (FALSE == PostQueuedCompletionStatus(mCompletionPort, 0, (ULONG_PTR)CK_STOP_NOW, NULL))
 		{
-			printf_s("PostQueuedCompletionStatus Error: %d\n", GetLastError());
+			GConsoleLog->PrintOut(true, "PostQueuedCompletionStatus Error: %d\n", GetLastError());
 		}
 
 		hThread[i] = mWorkerThread[i]->GetHandle();

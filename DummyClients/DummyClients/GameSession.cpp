@@ -8,6 +8,7 @@
 #include "GameLiftManager.h"
 #include "PacketType.h"
 #include "DummyClients.h"
+#include "Log.h"
 
 #include <Rpc.h>
 #include <aws/core/utils/Outcome.h>
@@ -69,8 +70,8 @@ bool GameSession::CreateGameSession()
 		mGameSessionId = gs.GetGameSessionId();
 		return true;
 	}
-
-	printf_s("%s\n", outcome.GetError().GetMessageA().c_str());
+	 
+	GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
 
 	return false;
 }
@@ -97,7 +98,7 @@ bool GameSession::CreatePlayerSessions()
 		return true;
 	}
 
-	printf_s("%s\n", outcome.GetError().GetMessageA().c_str());
+	GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
 	return false;
 }
 
@@ -157,10 +158,13 @@ bool GameSession::StartGameSessionPlacement()
 		}
 
 		if (status == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
+		{
+			//TODO: 아래 Fulfilled 부분처럼 수정.. 
 			return true;
+		}
 	}
 
-	printf_s("%s\n", outcome.GetError().GetMessageA().c_str());
+	GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
 
 	return false;
 }
@@ -178,6 +182,8 @@ bool GameSession::CheckGameSessionPlacement()
 
 			if (gs.GetStatus() == Aws::GameLift::Model::GameSessionPlacementState::FULFILLED)
 			{
+				//TODO: https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html 
+				// 리전 정보는 파싱하지말고 바로 얻기
 				auto arn = gs.GetGameSessionArn();
 				
 				std::string delim ="::gamesession";
@@ -201,7 +207,7 @@ bool GameSession::CheckGameSessionPlacement()
 				}
 				else
 				{
-					printf_s("%s\n", response.GetError().GetMessageA().c_str());
+					GConsoleLog->PrintOut(true, "%s\n", response.GetError().GetMessageA().c_str());
 					return false;
 				}
 				

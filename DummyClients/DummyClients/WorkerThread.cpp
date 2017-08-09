@@ -6,6 +6,7 @@
 #include "WorkerThread.h"
 #include "PlayerSession.h"
 #include "IocpManager.h"
+#include "Log.h"
 
 WorkerThread::WorkerThread(int workerThreadId, HANDLE hThread, HANDLE hCompletionPort)
 : mWorkerThreadId(workerThreadId), mThreadHandle(hThread), mCompletionPort(hCompletionPort)
@@ -91,7 +92,7 @@ bool WorkerThread::DoIocpJob()
 		remote->SendCompletion(dwTransferred);
 
 		if (context->mWsaBuf.len != dwTransferred)
-			printf_s("Partial SendCompletion requested [%d], sent [%d]\n", context->mWsaBuf.len, dwTransferred);
+			GConsoleLog->PrintOut(true, "Partial SendCompletion requested [%d], sent [%d]\n", context->mWsaBuf.len, dwTransferred);
 		else
 			completionOk = true;
 		
@@ -106,7 +107,7 @@ bool WorkerThread::DoIocpJob()
 		break;
 
 	default:
-		printf_s("Unknown I/O Type: %d\n", context->mIoType);
+		GConsoleLog->PrintOut(true, "Unknown I/O Type: %d\n", context->mIoType);
 		CRASH_ASSERT(false);
 		break;
 	}

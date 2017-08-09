@@ -74,7 +74,7 @@ REGISTER_HANDLER(PKT_SC_LOGIN)
 		return;
 	}
 
-	printf_s("Login OK: PlayerSessionId - %s\n", inPacket.mPlayerId);
+	GConsoleLog->PrintOut(true, "Login OK: PlayerSessionId - %s\n", inPacket.mPlayerId);
 
 	/// after 100ms, send a request
 	session->DoAsyncAfter(PLAYER_ACTION_INTERVAL, &PlayerSession::PlayTest);
