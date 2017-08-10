@@ -195,8 +195,7 @@ bool GameSession::CheckGameSessionPlacement()
 				mPort = gs.GetPort();
 
 				/// change region...
-				auto region = gs.GetGameSessionRegion();
-				GGameLiftManager->SetUpAwsClient(region);
+				GGameLiftManager->SetUpAwsClient(gs.GetGameSessionRegion());
 				
 				return true;
 			}
