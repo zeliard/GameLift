@@ -12,6 +12,8 @@
 
 #include <Rpc.h>
 #include <aws/core/utils/Outcome.h>
+#include <aws/gamelift/model/SearchGameSessionsRequest.h>
+#include <aws/gamelift/model/DescribeGameSessionsRequest.h>
 #include <aws/gamelift/model/CreateGameSessionRequest.h>
 #include <aws/gamelift/model/CreatePlayerSessionsRequest.h>
 #include <aws/gamelift/model/StartGameSessionPlacementRequest.h>
@@ -68,10 +70,66 @@ bool GameSession::CreateGameSession()
 		mPort = gs.GetPort();
 		mIpAddress = gs.GetIpAddress();
 		mGameSessionId = gs.GetGameSessionId();
-		return true;
+
+		/// wait until ACTIVE
+		while (true)
+		{
+			Aws::GameLift::Model::DescribeGameSessionsRequest descReq;
+			descReq.SetGameSessionId(mGameSessionId);
+						
+			auto descRet = GGameLiftManager->GetAwsClient()->DescribeGameSessions(descReq);
+			if (descRet.IsSuccess())
+			{
+				auto status = descRet.GetResult().GetGameSessions()[0].GetStatus();
+				if (status == Aws::GameLift::Model::GameSessionStatus::ACTIVE)
+				{
+					return true;
+				}
+			}
+			else
+			{
+				GConsoleLog->PrintOut(true, "%s\n", descRet.GetError().GetMessageA().c_str());
+				return false;
+			}
+
+			Sleep(500);
+		}
 	}
 	 
-	GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+	GConsoleLog->PrintOut(true, "CreateGameSession: %s\n", outcome.GetError().GetMessageA().c_str());
+
+	return false;
+}
+
+bool GameSession::FindAvailableGameSession()
+{
+	FastSpinlockGuard guard(mLock);
+	auto aliasId = GGameLiftManager->GetAliasId();
+	if (aliasId == "TEST_LOCAL")
+	{
+		return false; ///< GameLift Local mode does not support to find a game session
+	}
+
+	Aws::GameLift::Model::SearchGameSessionsRequest searchReq;
+	searchReq.SetAliasId(aliasId);
+	searchReq.SetFilterExpression("playerSessionCount=0 AND hasAvailablePlayerSessions=true");
+	searchReq.SetLimit(1);
+	auto searchResult = GGameLiftManager->GetAwsClient()->SearchGameSessions(searchReq);
+	if (searchResult.IsSuccess())
+	{
+		auto availableGs = searchResult.GetResult().GetGameSessions();
+		if (availableGs.size() > 0)
+		{
+			mPort = availableGs[0].GetPort();
+			mIpAddress = availableGs[0].GetIpAddress();
+			mGameSessionId = availableGs[0].GetGameSessionId();
+			return true;
+		}
+	}
+	else
+	{
+		GConsoleLog->PrintOut(true, "FindAvailableGameSession: %s\n", searchResult.GetError().GetMessageA().c_str());
+	}
 
 	return false;
 }
@@ -98,7 +156,7 @@ bool GameSession::CreatePlayerSessions()
 		return true;
 	}
 
-	GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+	GConsoleLog->PrintOut(true, "CreatePlayerSessions: %s\n", outcome.GetError().GetMessageA().c_str());
 	return false;
 }
 

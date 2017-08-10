@@ -20,6 +20,7 @@ public:
 	bool PreparePlayerSessions();
 
 	bool CreateGameSession();
+	bool FindAvailableGameSession();
 
 	bool CreatePlayerSessions();
 	bool ConnectPlayerSessions();
