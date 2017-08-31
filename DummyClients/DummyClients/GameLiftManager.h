@@ -16,6 +16,9 @@ public:
 	/// New API Test: StartGameSessionPlacement
 	void LaunchGameSessionPlacement();
 
+	/// FlexMatch Test
+	void TestFlexMatch();
+
 	std::shared_ptr<Aws::GameLift::GameLiftClient> GetAwsClient()
 	{
 		return mGLClient;

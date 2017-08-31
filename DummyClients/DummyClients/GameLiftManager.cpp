@@ -2,10 +2,15 @@
 #include "GameLiftManager.h"
 #include "GameSession.h"
 #include "PacketType.h"
+#include "Log.h"
 #include <aws/core/Aws.h>
 #include <aws/core/client/ClientConfiguration.h>
 
-
+#include <aws/core/utils/Outcome.h>
+#include <aws/gamelift/model/StartMatchmakingRequest.h>
+#include <aws/gamelift/model/StartMatchmakingResult.h>
+#include <aws/gamelift/model/DescribeMatchmakingRequest.h>
+#include <aws/gamelift/model/DescribeMatchmakingResult.h>
 
 GameLiftManager* GGameLiftManager = nullptr;
 
@@ -88,3 +93,60 @@ void GameLiftManager::LaunchGameSessionPlacement()
 	}
 }
 
+void GameLiftManager::TestFlexMatch()
+{
+	std::set<std::string> tickets;
+
+	for (int i = 0; i < 20; ++i)
+	{
+		Aws::GameLift::Model::StartMatchmakingRequest req;
+		req.SetConfigurationName("DummyMatchMakingConfig");
+		Aws::GameLift::Model::Player player;
+		std::string pid = "DummyPlayer" + std::to_string(1 + i);
+		player.SetPlayerId(pid);
+		std::vector<Aws::GameLift::Model::Player> players;
+		players.push_back(player);
+		req.SetPlayers(players);
+
+		auto outcome = mGLClient->StartMatchmaking(req);
+		if (!outcome.IsSuccess())
+		{
+			GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+			return;
+		}
+
+		auto ticketId = outcome.GetResult().GetMatchmakingTicket().GetTicketId();
+		tickets.insert(ticketId);
+	}
+	
+	Sleep(5000);
+
+	for (auto& tkt : tickets)
+	{
+		Aws::GameLift::Model::DescribeMatchmakingRequest req;
+		std::vector<std::string> tkts;
+		tkts.push_back(tkt);
+		req.SetTicketIds(tkts);
+		auto outcome = mGLClient->DescribeMatchmaking(req);
+		if (!outcome.IsSuccess())
+		{
+			GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+			return;
+		}
+
+		auto result = outcome.GetResult().GetTicketList()[0];
+		
+		if (result.GetStatus() == Aws::GameLift::Model::MatchmakingConfigurationStatus::COMPLETED)
+		{
+			auto info = result.GetGameSessionConnectionInfo();
+			std::cout << info.GetIpAddress() << " " << info.GetPort() << std::endl;
+		}
+		
+
+	}
+	
+	Sleep(1000);
+	
+
+
+}

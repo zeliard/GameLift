@@ -64,10 +64,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	printf_s("Start Game Sessions...\n");
 
 
-	if (matchQueue == "NotUse")
-		GGameLiftManager->LaunchGameSessions();
-	else
-		GGameLiftManager->LaunchGameSessionPlacement();
+	GGameLiftManager->TestFlexMatch();
+	//if (matchQueue == "NotUse")
+	//	GGameLiftManager->LaunchGameSessions();
+	//else
+	//	GGameLiftManager->LaunchGameSessionPlacement();
 
 
 	/// block here...
