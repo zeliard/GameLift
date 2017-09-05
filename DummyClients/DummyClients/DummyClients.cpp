@@ -6,7 +6,6 @@
 #include "DummyClients.h"
 #include "Exception.h"
 #include "PlayerSession.h"
-#include "GameSession.h"
 #include "IocpManager.h"
 #include "GameLiftManager.h"
 #include "Log.h"

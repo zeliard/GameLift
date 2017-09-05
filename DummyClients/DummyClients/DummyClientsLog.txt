@@ -1,240 +1,144 @@
-Login OK: PlayerSessionId - psess-4296fb54-4963-4a4a-a5d0-b3ac33d46f09
-Login OK: PlayerSessionId - psess-09b1d7cd-963f-4f80-94f9-ee087dc9c4c3
-Login OK: PlayerSessionId - psess-f1c9a449-91be-4c06-b2fa-ef683d70e022
-Login OK: PlayerSessionId - psess-0a5d1caa-95b9-4536-a1ff-695864b241aa
-Login OK: PlayerSessionId - psess-ab2953e0-f82b-49bc-a526-3a58939bfcef
-Login OK: PlayerSessionId - psess-c87a661c-1cfd-4f5f-a1a1-8dd670d57a55
-Login OK: PlayerSessionId - psess-34361a94-5b8f-42aa-b9a9-dab49570060a
-Login OK: PlayerSessionId - psess-a7d50154-1087-4e00-b661-bfe9da4b9725
-Login OK: PlayerSessionId - psess-5a0e55c7-0350-42bf-9de0-b95efe7268a3
-Login OK: PlayerSessionId - psess-5de1899a-4322-44cc-a1a3-e814062a2c2e
-Login OK: PlayerSessionId - psess-1c4f8257-0851-486f-8826-5f0fc38ced85
-Login OK: PlayerSessionId - psess-431597d5-071e-487b-9f1e-8dbfd2e902c5
-Login OK: PlayerSessionId - psess-056f31ab-99e6-4c44-a12f-cfec978311f8
-Login OK: PlayerSessionId - psess-04bb9db0-3564-412a-8607-455b51b47177
-Login OK: PlayerSessionId - psess-5b1dd215-f5c5-4827-8f7d-dc679957780f
-Login OK: PlayerSessionId - psess-b1e89c77-217a-491b-a949-9e8bd7a1b32c
-Login OK: PlayerSessionId - psess-3e6140ac-2196-46cd-9619-ed22ca27ac07
-Login OK: PlayerSessionId - psess-d3b6ed9b-5de2-431c-99b2-64924582b158
-Login OK: PlayerSessionId - psess-4107e2ef-332c-442b-86c2-d842e3e07df7
-Login OK: PlayerSessionId - psess-8e7e3c67-e0d8-4e79-bf86-d3f2a31c5be1
-Login OK: PlayerSessionId - psess-f554495a-a40e-4a77-b5fc-b0b24e3c0993
-Login OK: PlayerSessionId - psess-057c0dc9-4b94-4502-b691-08e5c659da21
-Login OK: PlayerSessionId - psess-0dcecc85-3d2f-4c4b-8a7c-2d2f331d2bcf
-Login OK: PlayerSessionId - psess-8dc8e37b-e8c2-4289-8594-01ecdb85ecf4
-Login OK: PlayerSessionId - psess-ac039d62-b5a8-41b5-afab-f351a965bbbe
-Login OK: PlayerSessionId - psess-d3088437-a431-442e-a137-d0e03e1cd888
-Login OK: PlayerSessionId - psess-e00e9b5f-1440-437b-8845-9952e16176ee
-Login OK: PlayerSessionId - psess-b9b08185-eb7c-48de-af18-cf1e1c3de110
-Login OK: PlayerSessionId - psess-4a043682-2dd7-45e1-95bf-f201d3db5bc5
-Login OK: PlayerSessionId - psess-a2c7ae37-a524-4b3e-b688-b67734518238
-Login OK: PlayerSessionId - psess-4f247863-a915-4322-bcb2-766211bb2f92
-Login OK: PlayerSessionId - psess-3eb2eec5-abb2-4e99-872d-0f6acde7894f
-Login OK: PlayerSessionId - psess-828fcaed-b019-4144-98dd-8e3fe05177d7
-Login OK: PlayerSessionId - psess-e253e971-a426-43fc-b112-12d3a6f514cb
-Login OK: PlayerSessionId - psess-e6f90148-6b76-4fd4-9457-566fb0e3f9b7
-Login OK: PlayerSessionId - psess-ed5d2d4a-b905-4b4a-9222-044376260c0f
-Login OK: PlayerSessionId - psess-527cfd24-6ddc-4a2b-90f5-48d3d7d67c6e
-Login OK: PlayerSessionId - psess-24140a3b-ec7e-4161-9ca6-1c0eab8ef9a7
-Login OK: PlayerSessionId - psess-d1f7898b-2863-421c-b954-d9d5e38c740b
-Login OK: PlayerSessionId - psess-a0843fb9-d6a1-4764-8f1f-500ad23c911b
-Login OK: PlayerSessionId - psess-513099bd-da95-4daf-b3a5-d4b7ddc5db12
-Login OK: PlayerSessionId - psess-f266e294-30ea-4188-872f-9a55a4d85817
-Login OK: PlayerSessionId - psess-3382b465-7c50-4098-8225-d997302af6bd
-Login OK: PlayerSessionId - psess-115b7d92-1642-4f13-a2b6-f6cf0766d34d
-Login OK: PlayerSessionId - psess-b68a1804-e1a6-4014-9917-c641729cebb4
-Login OK: PlayerSessionId - psess-9a7ecaf8-848f-4b88-8c06-00f553a1540b
-Login OK: PlayerSessionId - psess-ff7bc51b-39d8-4eca-ae24-a63a92db3090
-Login OK: PlayerSessionId - psess-f2a4818b-46b6-42fd-b482-87f3d0ebf0e5
-Login OK: PlayerSessionId - psess-c7542768-0afe-4447-8536-56db63441011
-Login OK: PlayerSessionId - psess-c5ae0ea1-e942-4e1d-b0e3-00725ec48e37
-Login OK: PlayerSessionId - psess-9b8f27ad-e353-467b-aefe-77783ae32b86
-Login OK: PlayerSessionId - psess-cc16eae0-6a8b-49d6-afba-66fab510c3db
-Login OK: PlayerSessionId - psess-d532053b-2daa-4c29-8366-3993e44c63a9
-Login OK: PlayerSessionId - psess-590efa6e-657a-47be-9eda-64cf01c183c7
-Login OK: PlayerSessionId - psess-2f2a30e1-1751-4e5d-8f38-31fa21d418dc
-Login OK: PlayerSessionId - psess-c65c5311-468b-4267-bc72-44d3da945b21
-Login OK: PlayerSessionId - psess-37dae792-ed0f-4177-94c2-abafd8398c29
-Login OK: PlayerSessionId - psess-135e5a89-6ea5-4b05-927f-e0e5ef7667e9
-Login OK: PlayerSessionId - psess-2cdd280a-63e3-41a0-b37f-94e327e79e38
-Login OK: PlayerSessionId - psess-d242f6d7-ab06-46fe-a06d-04862cda0adb
-Login OK: PlayerSessionId - psess-dea1ecec-8001-4a89-8ed4-68f08c0e184a
-Login OK: PlayerSessionId - psess-37af93e3-5292-43aa-abaa-9c304044b196
-Login OK: PlayerSessionId - psess-e7d75272-99fb-46dc-afb3-21ed42ccdc13
-Login OK: PlayerSessionId - psess-7aed840f-250d-472f-8c27-131610f0c650
-Login OK: PlayerSessionId - psess-5dc3fa20-3a33-454e-9538-04b663159af3
-Login OK: PlayerSessionId - psess-a5a91774-ac16-4479-bf7c-c70858051aa9
-Login OK: PlayerSessionId - psess-1b4a409c-b26c-4bca-9ce6-d8fe6af26770
-Login OK: PlayerSessionId - psess-f760d03a-dddf-4278-aa09-2935a749aa43
-Login OK: PlayerSessionId - psess-34beac12-9441-4c04-a274-af87755454ac
-Login OK: PlayerSessionId - psess-f78e7f89-332a-4095-9ad2-2499c9d3643c
-Login OK: PlayerSessionId - psess-56078289-19be-49e4-ad4c-fca4a93c0704
-Login OK: PlayerSessionId - psess-ee8272b0-fa65-420f-8c83-de6aa818e073
-Login OK: PlayerSessionId - psess-c8060fdb-7e01-41db-bc3a-7b3b8d50ece2
-Login OK: PlayerSessionId - psess-24c2dea4-a947-44ee-8945-2f30167d775a
-Login OK: PlayerSessionId - psess-23dd3c8e-ed2d-4630-b6a9-ef66384c5cc1
-Login OK: PlayerSessionId - psess-62a32b10-3054-4c5f-8e83-995df095c051
-Login OK: PlayerSessionId - psess-15b0a036-4e08-46c4-a77a-d5db8d064f52
-Login OK: PlayerSessionId - psess-3683539e-c4d6-47d8-9b36-97ae98c84e35
-Login OK: PlayerSessionId - psess-2e8b8654-581f-4876-b34e-0dca5d3f1c01
-Login OK: PlayerSessionId - psess-60da81d7-b787-418a-9222-f09bbf408829
-psess-4296fb54-4963-4a4a-a5d0-b3ac33d46f09 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-psess-4107e2ef-332c-442b-86c2-d842e3e07df7 requested to end a test
-psess-c87a661c-1cfd-4f5f-a1a1-8dd670d57a55 requested to end a test
-psess-ab2953e0-f82b-49bc-a526-3a58939bfcef requested to end a test
-psess-d3088437-a431-442e-a137-d0e03e1cd888 requested to end a test
-psess-34361a94-5b8f-42aa-b9a9-dab49570060a requested to end a test
-psess-e00e9b5f-1440-437b-8845-9952e16176ee requested to end a test
-psess-5a0e55c7-0350-42bf-9de0-b95efe7268a3 requested to end a test
-psess-0dcecc85-3d2f-4c4b-8a7c-2d2f331d2bcf requested to end a test
-psess-1c4f8257-0851-486f-8826-5f0fc38ced85 requested to end a test
-psess-09b1d7cd-963f-4f80-94f9-ee087dc9c4c3 requested to end a test
-psess-8e7e3c67-e0d8-4e79-bf86-d3f2a31c5be1 requested to end a test
-psess-b1e89c77-217a-491b-a949-9e8bd7a1b32c requested to end a test
-psess-056f31ab-99e6-4c44-a12f-cfec978311f8 requested to end a test
-psess-5b1dd215-f5c5-4827-8f7d-dc679957780f requested to end a test
-psess-8dc8e37b-e8c2-4289-8594-01ecdb85ecf4 requested to end a test
-psess-ac039d62-b5a8-41b5-afab-f351a965bbbe requested to end a test
-psess-431597d5-071e-487b-9f1e-8dbfd2e902c5 requested to end a test
-psess-a7d50154-1087-4e00-b661-bfe9da4b9725 requested to end a test
-psess-0a5d1caa-95b9-4536-a1ff-695864b241aa requested to end a test
-psess-057c0dc9-4b94-4502-b691-08e5c659da21 requested to end a test
-psess-3e6140ac-2196-46cd-9619-ed22ca27ac07 requested to end a test
-psess-f554495a-a40e-4a77-b5fc-b0b24e3c0993 requested to end a test
-psess-5de1899a-4322-44cc-a1a3-e814062a2c2e requested to end a test
-psess-f1c9a449-91be-4c06-b2fa-ef683d70e022 requested to end a test
-psess-b9b08185-eb7c-48de-af18-cf1e1c3de110 requested to end a test
-psess-04bb9db0-3564-412a-8607-455b51b47177 requested to end a test
-psess-d3b6ed9b-5de2-431c-99b2-64924582b158 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=40708 
-psess-a2c7ae37-a524-4b3e-b688-b67734518238 requested to end a test
-psess-4f247863-a915-4322-bcb2-766211bb2f92 requested to end a test
-psess-4a043682-2dd7-45e1-95bf-f201d3db5bc5 requested to end a test
-psess-828fcaed-b019-4144-98dd-8e3fe05177d7 requested to end a test
-psess-3eb2eec5-abb2-4e99-872d-0f6acde7894f requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-psess-e253e971-a426-43fc-b112-12d3a6f514cb requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-psess-24140a3b-ec7e-4161-9ca6-1c0eab8ef9a7 requested to end a test
-psess-e6f90148-6b76-4fd4-9457-566fb0e3f9b7 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-psess-ed5d2d4a-b905-4b4a-9222-044376260c0f requested to end a test
-psess-527cfd24-6ddc-4a2b-90f5-48d3d7d67c6e requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-psess-513099bd-da95-4daf-b3a5-d4b7ddc5db12 requested to end a test
-psess-a0843fb9-d6a1-4764-8f1f-500ad23c911b requested to end a test
-psess-d1f7898b-2863-421c-b954-d9d5e38c740b requested to end a test
-psess-f266e294-30ea-4188-872f-9a55a4d85817 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-psess-3382b465-7c50-4098-8225-d997302af6bd requested to end a test
-psess-115b7d92-1642-4f13-a2b6-f6cf0766d34d requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-psess-b68a1804-e1a6-4014-9917-c641729cebb4 requested to end a test
-psess-9a7ecaf8-848f-4b88-8c06-00f553a1540b requested to end a test
-psess-c5ae0ea1-e942-4e1d-b0e3-00725ec48e37 requested to end a test
-psess-f2a4818b-46b6-42fd-b482-87f3d0ebf0e5 requested to end a test
-psess-c7542768-0afe-4447-8536-56db63441011 requested to end a test
-psess-ff7bc51b-39d8-4eca-ae24-a63a92db3090 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-psess-9b8f27ad-e353-467b-aefe-77783ae32b86 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-psess-d532053b-2daa-4c29-8366-3993e44c63a9 requested to end a test
-psess-cc16eae0-6a8b-49d6-afba-66fab510c3db requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-psess-590efa6e-657a-47be-9eda-64cf01c183c7 requested to end a test
-psess-2f2a30e1-1751-4e5d-8f38-31fa21d418dc requested to end a test
-psess-c65c5311-468b-4267-bc72-44d3da945b21 requested to end a test
-psess-37dae792-ed0f-4177-94c2-abafd8398c29 requested to end a test
-psess-135e5a89-6ea5-4b05-927f-e0e5ef7667e9 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-psess-2cdd280a-63e3-41a0-b37f-94e327e79e38 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-psess-dea1ecec-8001-4a89-8ed4-68f08c0e184a requested to end a test
-psess-d242f6d7-ab06-46fe-a06d-04862cda0adb requested to end a test
-psess-e7d75272-99fb-46dc-afb3-21ed42ccdc13 requested to end a test
-psess-7aed840f-250d-472f-8c27-131610f0c650 requested to end a test
-psess-37af93e3-5292-43aa-abaa-9c304044b196 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-psess-5dc3fa20-3a33-454e-9538-04b663159af3 requested to end a test
-psess-a5a91774-ac16-4479-bf7c-c70858051aa9 requested to end a test
-psess-1b4a409c-b26c-4bca-9ce6-d8fe6af26770 requested to end a test
-psess-56078289-19be-49e4-ad4c-fca4a93c0704 requested to end a test
-psess-ee8272b0-fa65-420f-8c83-de6aa818e073 requested to end a test
-psess-f78e7f89-332a-4095-9ad2-2499c9d3643c requested to end a test
-psess-f760d03a-dddf-4278-aa09-2935a749aa43 requested to end a test
-psess-34beac12-9441-4c04-a274-af87755454ac requested to end a test
-psess-c8060fdb-7e01-41db-bc3a-7b3b8d50ece2 requested to end a test
-psess-23dd3c8e-ed2d-4630-b6a9-ef66384c5cc1 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-psess-24c2dea4-a947-44ee-8945-2f30167d775a requested to end a test
-psess-62a32b10-3054-4c5f-8e83-995df095c051 requested to end a test
-psess-15b0a036-4e08-46c4-a77a-d5db8d064f52 requested to end a test
-psess-3683539e-c4d6-47d8-9b36-97ae98c84e35 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-psess-2e8b8654-581f-4876-b34e-0dca5d3f1c01 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-psess-60da81d7-b787-418a-9222-f09bbf408829 requested to end a test
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33701 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43105 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=45571 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39166 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=33738 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39167 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39309 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43127 
-[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44313 
+Login OK: PlayerSessionId - psess-06fa6f48-468e-4eb0-968e-ffbb0524346d
+Login OK: PlayerSessionId - psess-474235b1-116b-4377-abce-1f6c4077463e
+Login OK: PlayerSessionId - psess-e626f588-8b7e-4356-b375-4519875bd814
+Login OK: PlayerSessionId - psess-dc3db36b-9669-4002-9be9-5e864c7e1f26
+Login OK: PlayerSessionId - psess-3e9c197b-7629-4129-a245-4be978567bed
+Login OK: PlayerSessionId - psess-71706b57-aa62-4b7e-a2f1-24fa78020999
+Login OK: PlayerSessionId - psess-65801065-5041-4a53-b9fd-f7b9c2af89a8
+Login OK: PlayerSessionId - psess-95829936-47f5-4e7b-8a93-bfaa01e9f92d
+Login OK: PlayerSessionId - psess-66792fa4-fa63-4f70-ab5e-150106b4a326
+Login OK: PlayerSessionId - psess-d3aee109-a425-4ed4-88ca-fd329286562f
+Login OK: PlayerSessionId - psess-16add291-aee8-4a8c-a5a7-e6e3f6f75cc3
+Login OK: PlayerSessionId - psess-d665811a-914e-4346-9bf2-ff545e9ce33c
+Login OK: PlayerSessionId - psess-ef800f0f-0219-4601-a914-0dff694aa46e
+Login OK: PlayerSessionId - psess-45b2d048-ba21-42e5-8f9f-18b7485a2f5f
+Login OK: PlayerSessionId - psess-6fbc59b5-5048-4544-aa32-e1c257c0340c
+Login OK: PlayerSessionId - psess-1307ce1e-bfd6-4c00-ac30-0eda0abc5591
+Login OK: PlayerSessionId - psess-62ab5e8c-3384-49f1-8640-959d748df8fd
+Login OK: PlayerSessionId - psess-f97474c9-918c-4aea-8b44-bed8abf826f4
+Login OK: PlayerSessionId - psess-91a60f86-be5f-4b75-93ed-1d97589bdead
+Login OK: PlayerSessionId - psess-7162c883-c4ce-4b25-8675-1ce46c6c4871
+Login OK: PlayerSessionId - psess-2a124d6e-f1f9-4512-892e-4b8ed28a9c4e
+Login OK: PlayerSessionId - psess-0557d939-76a6-46e3-ba05-6adf577a6f9f
+Login OK: PlayerSessionId - psess-b9ad2e5c-2e5e-4c84-9691-eb4cf7177281
+Login OK: PlayerSessionId - psess-fcf087fd-67bb-4a6b-a33f-02686f8e71f2
+Login OK: PlayerSessionId - psess-9d5e8481-30ff-458b-b2c3-7c0ef1cd5805
+Login OK: PlayerSessionId - psess-c373dff5-c97e-4972-a6d5-5cc107015d87
+Login OK: PlayerSessionId - psess-0a575e58-cd7a-4d77-9ecc-00a419283692
+Login OK: PlayerSessionId - psess-d84dc163-f215-43ed-a468-d4485bd9b401
+Login OK: PlayerSessionId - psess-bb2feb14-e97c-45c3-bce2-c889f5519996
+Login OK: PlayerSessionId - psess-92acfd67-fd49-4704-ac5a-7c4780474adc
+Login OK: PlayerSessionId - psess-071f16dd-a9f5-40dc-a39c-65829cab9b18
+Login OK: PlayerSessionId - psess-9f5f113f-104f-425b-b49d-1c0c88cfa924
+Login OK: PlayerSessionId - psess-ef6f42bc-5776-4d98-82d0-6c42eb8359b2
+Login OK: PlayerSessionId - psess-47979b84-daf2-4428-9fc0-5908d4dd9bd4
+Login OK: PlayerSessionId - psess-1365b191-db88-4702-8d47-5fc0b0386f2d
+Login OK: PlayerSessionId - psess-3f9bae6b-32af-4c2c-9f09-4e0b35efa3dc
+Login OK: PlayerSessionId - psess-296615a5-5b25-45cc-89fa-7f8738eec072
+Login OK: PlayerSessionId - psess-4c0a51bc-4a7a-40cb-ae17-31b9dcbd85bb
+Login OK: PlayerSessionId - psess-c35cb3ca-2c7e-4b9b-b1ba-c674ca6c41eb
+Login OK: PlayerSessionId - psess-e5b96747-7ef1-45bc-ae38-b6a215aef5e3
+Login OK: PlayerSessionId - psess-9050bf59-0dca-4c77-9934-9eff9f75bd8c
+Login OK: PlayerSessionId - psess-49686c44-238d-461f-9666-de2114616c5d
+Login OK: PlayerSessionId - psess-ff35bab1-6aed-4d8b-911f-0ac12732bcaa
+Login OK: PlayerSessionId - psess-1e3fd963-f638-4645-a4e8-970d522d5d1e
+Login OK: PlayerSessionId - psess-212a7245-9b6c-4821-ba51-3a5a18e975af
+Login OK: PlayerSessionId - psess-d9064807-69a2-4626-ba16-40e430c18b58
+Login OK: PlayerSessionId - psess-b98c9558-9c80-4984-a923-d157b80e37cc
+Login OK: PlayerSessionId - psess-87bf2c27-2cd9-4950-8c5d-e1f60bc5643d
+psess-06fa6f48-468e-4eb0-968e-ffbb0524346d requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-474235b1-116b-4377-abce-1f6c4077463e requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-e626f588-8b7e-4356-b375-4519875bd814 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-dc3db36b-9669-4002-9be9-5e864c7e1f26 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-3e9c197b-7629-4129-a245-4be978567bed requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-71706b57-aa62-4b7e-a2f1-24fa78020999 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-65801065-5041-4a53-b9fd-f7b9c2af89a8 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-95829936-47f5-4e7b-8a93-bfaa01e9f92d requested to end a test
+psess-66792fa4-fa63-4f70-ab5e-150106b4a326 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-d3aee109-a425-4ed4-88ca-fd329286562f requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-16add291-aee8-4a8c-a5a7-e6e3f6f75cc3 requested to end a test
+psess-d665811a-914e-4346-9bf2-ff545e9ce33c requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-ef800f0f-0219-4601-a914-0dff694aa46e requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-45b2d048-ba21-42e5-8f9f-18b7485a2f5f requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-6fbc59b5-5048-4544-aa32-e1c257c0340c requested to end a test
+psess-1307ce1e-bfd6-4c00-ac30-0eda0abc5591 requested to end a test
+psess-62ab5e8c-3384-49f1-8640-959d748df8fd requested to end a test
+psess-f97474c9-918c-4aea-8b44-bed8abf826f4 requested to end a test
+psess-91a60f86-be5f-4b75-93ed-1d97589bdead requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-7162c883-c4ce-4b25-8675-1ce46c6c4871 requested to end a test
+psess-2a124d6e-f1f9-4512-892e-4b8ed28a9c4e requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=41198 
+psess-0557d939-76a6-46e3-ba05-6adf577a6f9f requested to end a test
+psess-b9ad2e5c-2e5e-4c84-9691-eb4cf7177281 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=35340 
+psess-fcf087fd-67bb-4a6b-a33f-02686f8e71f2 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=38943 
+psess-9d5e8481-30ff-458b-b2c3-7c0ef1cd5805 requested to end a test
+psess-c373dff5-c97e-4972-a6d5-5cc107015d87 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-0a575e58-cd7a-4d77-9ecc-00a419283692 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-d84dc163-f215-43ed-a468-d4485bd9b401 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-bb2feb14-e97c-45c3-bce2-c889f5519996 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-92acfd67-fd49-4704-ac5a-7c4780474adc requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-071f16dd-a9f5-40dc-a39c-65829cab9b18 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-9f5f113f-104f-425b-b49d-1c0c88cfa924 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-ef6f42bc-5776-4d98-82d0-6c42eb8359b2 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-47979b84-daf2-4428-9fc0-5908d4dd9bd4 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-1365b191-db88-4702-8d47-5fc0b0386f2d requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-3f9bae6b-32af-4c2c-9f09-4e0b35efa3dc requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-4c0a51bc-4a7a-40cb-ae17-31b9dcbd85bb requested to end a test
+psess-296615a5-5b25-45cc-89fa-7f8738eec072 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=39455 
+psess-c35cb3ca-2c7e-4b9b-b1ba-c674ca6c41eb requested to end a test
+psess-e5b96747-7ef1-45bc-ae38-b6a215aef5e3 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=44670 
+psess-9050bf59-0dca-4c77-9934-9eff9f75bd8c requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-49686c44-238d-461f-9666-de2114616c5d requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-ff35bab1-6aed-4d8b-911f-0ac12732bcaa requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-1e3fd963-f638-4645-a4e8-970d522d5d1e requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-212a7245-9b6c-4821-ba51-3a5a18e975af requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-d9064807-69a2-4626-ba16-40e430c18b58 requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-b98c9558-9c80-4984-a923-d157b80e37cc requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 
+psess-87bf2c27-2cd9-4950-8c5d-e1f60bc5643d requested to end a test
+[DEBUG] Client Disconnected: Reason=3 IP=52.192.30.205, PORT=43760 

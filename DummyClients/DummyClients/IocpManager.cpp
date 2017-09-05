@@ -8,8 +8,6 @@
 #include "DummyClients.h"
 #include "PlayerSession.h"
 #include "WorkerThread.h"
-#include "GameSession.h"
-
 
 IocpManager* GIocpManager = nullptr;
 

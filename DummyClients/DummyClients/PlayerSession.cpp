@@ -119,7 +119,7 @@ void PlayerSession::TrackMatchMaking()
 		}
 	}
 
-	DoAsyncAfter(PLAYER_ACTION_INTERVAL, &PlayerSession::TrackMatchMaking);
+	DoAsyncAfter(1000, &PlayerSession::TrackMatchMaking);
 }
 
 bool PlayerSession::ConnectRequest()
