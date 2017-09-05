@@ -31,7 +31,7 @@ void Session::DisconnectRequest(DisconnectReason dr)
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(context);
-			GConsoleLog->PrintOut(true, "Session::DisconnectRequest Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(false, "Session::DisconnectRequest Error : %d\n", GetLastError());
 		}
 	}
 
@@ -58,7 +58,7 @@ bool Session::PreRecv()
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(recvContext);
-			GConsoleLog->PrintOut(true, "Session::PreRecv Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(false, "Session::PreRecv Error : %d\n", GetLastError());
 			return false;
 		}
 	}
@@ -90,7 +90,7 @@ bool Session::PostRecv()
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(recvContext);
-			GConsoleLog->PrintOut(true, "Session::PostRecv Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(false, "Session::PostRecv Error : %d\n", GetLastError());
 			return false;
 		}
 
@@ -135,7 +135,7 @@ bool Session::FlushSend()
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(sendContext);
-			GConsoleLog->PrintOut(true, "Session::PostSend Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(false, "Session::PostSend Error : %d\n", GetLastError());
 
 			DisconnectRequest(DR_IO_REQUEST_ERROR);
 			return false;

@@ -15,7 +15,8 @@ struct OverlappedDisconnectContext;
 enum COMPLETION_KEY 
 {
 	CK_NONE,
-	CK_STOP_NOW = 0xDEAD
+	CK_IOCP_TASK	= 0x1,
+	CK_STOP_NOW		= 0xDEAD
 };
 
 
@@ -33,6 +34,8 @@ public:
 
 	HANDLE GetComletionPort()	{ return mCompletionPort; }
 	int	GetIoThreadCount()		{ return mIoThreadCount;  }
+
+	void PostIocpTask(void* context);
 
 	static LPFN_DISCONNECTEX mFnDisconnectEx;
 	static LPFN_CONNECTEX mFnConnectEx;

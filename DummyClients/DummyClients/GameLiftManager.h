@@ -2,53 +2,37 @@
 
 #include <aws/gamelift/GameLiftClient.h>
 
-class GameSession;
+class PlayerSession;
 class GameLiftManager
 {
 public:
-	GameLiftManager(const std::string& alias, const std::string& region, const std::string& matchQueue);
+	GameLiftManager(const std::string& matchConfig);
 
 	void SetUpAwsClient(const std::string& region);
-	void PrepareGameSessions(int gsCount);
-	void LaunchGameSessions();
-	void TerminateGameSessions();
+	
+	bool PreparePlayerSessions(int psCount);
 
-	/// New API Test: StartGameSessionPlacement
-	void LaunchGameSessionPlacement();
+	void LaunchPlayerSessions();
+	void TerminatePlayerSessions();
 
-	/// FlexMatch Test
-	void TestFlexMatch();
 
 	std::shared_ptr<Aws::GameLift::GameLiftClient> GetAwsClient()
 	{
 		return mGLClient;
 	}
 
-	const std::string& GetAliasId() const
+	const std::string& GetMatchMakingConfigName() const
 	{
-		return mAliasId;
+		return mMatchConfigName;
 	}
-
-	const std::string& GetRegion() const
-	{
-		return mRegion;
-	}
-
-	const std::string& GetMatchQueue() const
-	{
-		return mMatchQueueName;
-	}
-
 
 private:
+
 	std::shared_ptr<Aws::GameLift::GameLiftClient> mGLClient;
 
-	std::string mRegion;
+	std::string mMatchConfigName;
 
-	std::string mAliasId; ///< only used if MatchQueue mode is not enabled.
-	std::string mMatchQueueName; ///< only used when MatchQueue enabled
-
-	std::vector<std::shared_ptr<GameSession>> mGameSessions;
+	std::vector<PlayerSession*> mPlayerSessions;
 };
 
 extern GameLiftManager* GGameLiftManager;

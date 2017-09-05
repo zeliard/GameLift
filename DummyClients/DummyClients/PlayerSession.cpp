@@ -5,16 +5,21 @@
 #include "OverlappedIOContext.h"
 #include "PlayerSession.h"
 #include "IocpManager.h"
-#include "GameSession.h"
+#include "GameLiftManager.h"
 
 #include "PacketType.h"
 
+#include <aws/core/utils/Outcome.h>
+#include <aws/gamelift/model/StartMatchmakingRequest.h>
+#include <aws/gamelift/model/StartMatchmakingResult.h>
+#include <aws/gamelift/model/DescribeMatchmakingRequest.h>
+#include <aws/gamelift/model/DescribeMatchmakingResult.h>
+
 #define CLIENT_BUFSIZE	65536
 
-PlayerSession::PlayerSession(GameSession* owner) : Session(CLIENT_BUFSIZE, CLIENT_BUFSIZE)
+PlayerSession::PlayerSession(const std::string& playerId) : Session(CLIENT_BUFSIZE, CLIENT_BUFSIZE), mPlayerId(playerId)
 {
-	mOwnerGameSession = owner;
-	mPlayerIdx = -1;
+	mPort = -1;
 	mPosX = 0;
 	mPosY = 0;
 	mPlayTestCount = 0;
@@ -37,21 +42,87 @@ bool PlayerSession::PrepareSession()
 
  	if (SOCKET_ERROR == bind(mSocket, (SOCKADDR*)&addr, sizeof(addr)))
  	{
-		GConsoleLog->PrintOut(true, "PlayerSession::PrepareSession() bind error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(false, "PlayerSession::PrepareSession() bind error: %d\n", GetLastError());
  		return false ;
  	}
 
 	HANDLE handle = CreateIoCompletionPort((HANDLE)mSocket, GIocpManager->GetComletionPort(), (ULONG_PTR)this, 0);
 	if (handle != GIocpManager->GetComletionPort())
 	{
-		GConsoleLog->PrintOut(true, "PlayerSession::PrepareSession() CreateIoCompletionPort error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(false, "PlayerSession::PrepareSession() CreateIoCompletionPort error: %d\n", GetLastError());
 		return false;
 	}
 
 	return true;
 }
 
-bool PlayerSession::ConnectRequest(const std::string& playerSessionId, int idx)
+bool PlayerSession::StartMatchMaking()
+{
+	Aws::GameLift::Model::StartMatchmakingRequest req;
+	req.SetConfigurationName(GGameLiftManager->GetMatchMakingConfigName());
+	
+	Aws::GameLift::Model::Player player;
+	player.SetPlayerId(mPlayerId);
+	std::vector<Aws::GameLift::Model::Player> players;
+	players.push_back(player);
+	req.SetPlayers(players);
+
+	auto outcome = GGameLiftManager->GetAwsClient()->StartMatchmaking(req);
+	if (!outcome.IsSuccess())
+	{
+		GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+		return false;
+	}
+
+	mTicketId = outcome.GetResult().GetMatchmakingTicket().GetTicketId();
+
+	/// Post to IOCP queue -> TrachMatchMaking...
+	GIocpManager->PostIocpTask(this);
+
+	return true;
+}
+
+void PlayerSession::TrackMatchMaking()
+{
+	Aws::GameLift::Model::DescribeMatchmakingRequest req;
+	std::vector<std::string> ticketIds;
+	ticketIds.push_back(mTicketId);
+	req.SetTicketIds(ticketIds);
+
+	auto outcome = GGameLiftManager->GetAwsClient()->DescribeMatchmaking(req);
+	if (!outcome.IsSuccess())
+	{
+		GConsoleLog->PrintOut(true, "%s\n", outcome.GetError().GetMessageA().c_str());
+		return;
+	}
+
+	auto result = outcome.GetResult().GetTicketList()[0];
+
+	if (result.GetStatus() == Aws::GameLift::Model::MatchmakingConfigurationStatus::COMPLETED)
+	{
+		auto info = result.GetGameSessionConnectionInfo();
+		mIpAddress = info.GetIpAddress();
+		mPort = info.GetPort();
+
+		for (auto& psess : info.GetMatchedPlayerSessions())
+		{
+			/// Find Me
+			if (psess.GetPlayerId() == mPlayerId)
+			{
+				mPlayerSessionId = psess.GetPlayerSessionId();
+
+				/// Connect to a Server
+				ConnectRequest();
+				
+				return;
+			}
+		}
+	}
+
+	DoAsyncAfter(PLAYER_ACTION_INTERVAL, &PlayerSession::TrackMatchMaking);
+}
+
+bool PlayerSession::ConnectRequest()
 {
 	if (mConnected)
 	{
@@ -61,9 +132,9 @@ bool PlayerSession::ConnectRequest(const std::string& playerSessionId, int idx)
 	
 	/// Set up our socket address structure
 	ZeroMemory(&mConnectAddr, sizeof(mConnectAddr));
-	mConnectAddr.sin_port = htons(static_cast<u_short>(mOwnerGameSession->mPort));
+	mConnectAddr.sin_port = htons(static_cast<u_short>(mPort));
 	mConnectAddr.sin_family = AF_INET;
-	mConnectAddr.sin_addr.s_addr = inet_addr(mOwnerGameSession->mIpAddress.c_str());
+	mConnectAddr.sin_addr.s_addr = inet_addr(mIpAddress.c_str());
 
 	OverlappedConnectContext* context = new OverlappedConnectContext(this);
 
@@ -72,12 +143,10 @@ bool PlayerSession::ConnectRequest(const std::string& playerSessionId, int idx)
 		if (WSAGetLastError() != WSA_IO_PENDING)
 		{
 			DeleteIoContext(context);
-			GConsoleLog->PrintOut(true, "PlayerSession::ConnectRequest Error : %d\n", GetLastError());
+			GConsoleLog->PrintOut(false, "PlayerSession::ConnectRequest Error : %d\n", GetLastError());
 		}
 	}
-
-	mPlayerSessionId = playerSessionId;
-	mPlayerIdx = idx;
+	
 	return true;
 }
 
@@ -88,9 +157,9 @@ void PlayerSession::ConnectCompletion()
 		DWORD errCode = GetLastError();
 
 		if (WSAENOTCONN == errCode)
-			GConsoleLog->PrintOut(true, "Connecting a server failed: maybe WSAENOTCONN??\n");
+			GConsoleLog->PrintOut(false, "Connecting a server failed: maybe WSAENOTCONN??\n");
 		else
-			GConsoleLog->PrintOut(true, "SO_UPDATE_CONNECT_CONTEXT failed: %d\n", errCode);
+			GConsoleLog->PrintOut(false, "SO_UPDATE_CONNECT_CONTEXT failed: %d\n", errCode);
 
 		return;
 	}
@@ -98,7 +167,7 @@ void PlayerSession::ConnectCompletion()
 	int opt = 1;
 	if (SOCKET_ERROR == setsockopt(mSocket, IPPROTO_TCP, TCP_NODELAY, (const char*)&opt, sizeof(int)))
 	{
-		GConsoleLog->PrintOut(true, "[DEBUG] TCP_NODELAY error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(false, "[DEBUG] TCP_NODELAY error: %d\n", GetLastError());
 		CRASH_ASSERT(false);
 		return;
 	}
@@ -106,7 +175,7 @@ void PlayerSession::ConnectCompletion()
 	opt = 0;
 	if (SOCKET_ERROR == setsockopt(mSocket, SOL_SOCKET, SO_RCVBUF, (const char*)&opt, sizeof(int)))
 	{
-		GConsoleLog->PrintOut(true, "[DEBUG] SO_RCVBUF change error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(false, "[DEBUG] SO_RCVBUF change error: %d\n", GetLastError());
 		CRASH_ASSERT(false);
 		return;
 	}
@@ -118,12 +187,12 @@ void PlayerSession::ConnectCompletion()
 
 	if (false == PreRecv())
 	{
-		GConsoleLog->PrintOut(true, "[DEBUG] PreRecv for Server Connection error: %d\n", GetLastError());
+		GConsoleLog->PrintOut(false, "[DEBUG] PreRecv for Server Connection error: %d\n", GetLastError());
 		InterlockedExchange(&mConnected, 0);
 		return;
 	}
 
-	GConsoleLog->PrintOut(true, "[DEBUG] Session established: IP=%s, PORT=%d \n", inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
+	GConsoleLog->PrintOut(false, "[DEBUG] Session established: IP=%s, PORT=%d \n", inet_ntoa(mConnectAddr.sin_addr), ntohs(mConnectAddr.sin_port));
 
 	/// start a test!
 	StartTest();
@@ -181,7 +250,7 @@ void PlayerSession::PlayTest()
 	else
 	{
 		MoveRequest outPacket;
-		outPacket.mPlayerIdx = mPlayerIdx;
+		outPacket.mPlayerIdx = rand();
 
 		SetNextPos();
 		outPacket.mPosX = mPosX;

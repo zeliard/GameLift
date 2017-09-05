@@ -165,7 +165,6 @@
     <ClInclude Include="JobDispatcher.h" />
     <ClInclude Include="PlayerSession.h" />
     <ClInclude Include="GameLiftManager.h" />
-    <ClInclude Include="GameSession.h" />
     <ClInclude Include="DummyClients.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FastSpinlock.h" />
@@ -193,7 +192,6 @@
     <ClCompile Include="PlayerSession.cpp" />
     <ClCompile Include="GameLiftManager.cpp" />
     <ClCompile Include="PacketHandler.cpp" />
-    <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="DummyClients.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="FastSpinlock.cpp" />

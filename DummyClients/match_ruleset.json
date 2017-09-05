@@ -1,0 +1,20 @@
+{
+    "name": "battleground",
+    "ruleLanguageVersion": "1.0",
+    "teams": [{
+        "name": "cowboys",
+        "maxPlayers": 4,
+        "minPlayers": 4
+    }, {
+        "name": "aliens",
+        "maxPlayers": 4,
+        "minPlayers": 4
+    }],
+    "rules": [{ "name": "EqualTeamSizes",
+        "description": "Only launch a game when the number of players in each team matches",
+        "type": "comparison",
+        "measurements": [ "count(teams[cowboys].players)" ],
+        "referenceValue": "count(teams[aliens].players)",
+        "operation": "=" // other operations: !=, <, <=, >, >=
+    }]
+}

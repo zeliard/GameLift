@@ -2,17 +2,18 @@
 
 #include "Session.h"
 
-class GameSession;
 
 class PlayerSession : public Session, public ObjectPool<PlayerSession>
 {
 public:
-	PlayerSession(GameSession* owner);
+	PlayerSession(const std::string& playerId);
 	virtual ~PlayerSession();
 
 	bool PrepareSession();
+	bool StartMatchMaking();
+	void TrackMatchMaking();
 
-	bool ConnectRequest(const std::string& playerSessionId, int idx);
+	bool ConnectRequest();
 	void ConnectCompletion();
 
 	virtual void OnRead(size_t len);
@@ -35,13 +36,17 @@ public:
 private:
 	void SetNextPos();
 
-
 	SOCKADDR_IN mConnectAddr;
 
+	/// retrieved info
+	int mPort;
+	std::string mIpAddress;
 	std::string mPlayerSessionId;
-	GameSession* mOwnerGameSession;
 
-	int mPlayerIdx;
+	std::string mTicketId; ///< MatchMaking Ticket Id for tracking
+
+	std::string mPlayerId;
+
 	float mPosX;
 	float mPosY;
 

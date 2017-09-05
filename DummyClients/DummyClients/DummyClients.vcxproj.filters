@@ -65,9 +65,6 @@
     <ClInclude Include="PlayerSession.h">
       <Filter>GameLift</Filter>
     </ClInclude>
-    <ClInclude Include="GameSession.h">
-      <Filter>GameLift</Filter>
-    </ClInclude>
     <ClInclude Include="GameLiftManager.h">
       <Filter>GameLift</Filter>
     </ClInclude>
@@ -125,9 +122,6 @@
       <Filter>Packet</Filter>
     </ClCompile>
     <ClCompile Include="PlayerSession.cpp">
-      <Filter>GameLift</Filter>
-    </ClCompile>
-    <ClCompile Include="GameSession.cpp">
       <Filter>GameLift</Filter>
     </ClCompile>
     <ClCompile Include="GameLiftManager.cpp">
