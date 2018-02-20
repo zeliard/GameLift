@@ -108,7 +108,10 @@ void GameLiftManager::OnProcessTerminate()
 	// such as notifying players, preserving game state data, and other cleanup
 	if (mActivated)
 	{
-		GConsoleLog->PrintOut(true, "[GAMELIFT] OnProcessTerminate Success\n");
+		auto currentTime = std::time(0);
+		time_t termTime = Aws::GameLift::Server::GetTerminationTime().GetResult();
+
+		GConsoleLog->PrintOut(true, "[GAMELIFT] OnProcessTerminate Success: after [%d]\n", (termTime-currentTime));
 		TerminateGameSession(0xDEAD);
 	}
 }
