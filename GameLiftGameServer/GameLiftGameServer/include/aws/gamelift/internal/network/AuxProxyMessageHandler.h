@@ -11,6 +11,7 @@
 */
 #pragma once
 #include <aws/gamelift/server/model/GameSession.h>
+#include <aws/gamelift/server/model/UpdateGameSession.h>
 #include <sio_client.h>
 
 namespace Aws
@@ -27,7 +28,8 @@ namespace Network
     {
     public:
         virtual void OnStartGameSession(GameSession& gameSession, sio::message::list& ack_resp) = 0;
-        virtual void OnTerminateProcess() = 0;
+        virtual void OnUpdateGameSession(UpdateGameSession& gameSession, sio::message::list& ack_resp) = 0;
+        virtual void OnTerminateProcess(long terminationTime) = 0;
     };
 } //namespace Network
 } //namespace Internal

@@ -12,6 +12,7 @@
 #pragma once
 #include <aws/gamelift/common/GameLiftErrors.h>
 #include <aws/gamelift/server/model/DescribePlayerSessionsResult.h>
+#include <aws/gamelift/server/model/StartMatchBackfillResult.h>
 #include <future>
 
 namespace Aws
@@ -121,7 +122,9 @@ namespace Aws
         typedef Outcome<void*, GameLiftError> GenericOutcome;
         typedef std::future<GenericOutcome> GenericOutcomeCallable;
         typedef Outcome<std::string, GameLiftError> AwsStringOutcome;
+        typedef Outcome<long, GameLiftError> AwsLongOutcome;
         typedef Outcome<Aws::GameLift::Server::Model::DescribePlayerSessionsResult, GameLiftError> DescribePlayerSessionsOutcome;
+        typedef Outcome<Aws::GameLift::Server::Model::StartMatchBackfillResult, GameLiftError> StartMatchBackfillOutcome;
 #else
         public:
 
@@ -182,7 +185,9 @@ namespace Aws
 
         typedef Outcome<void*, GameLiftError> GenericOutcome;
         typedef Outcome<const char*, GameLiftError> AwsStringOutcome;
+        typedef Outcome<long, GameLiftError> AwsLongOutcome;
         typedef Outcome<Aws::GameLift::Server::Model::DescribePlayerSessionsResult, GameLiftError> DescribePlayerSessionsOutcome;
+        typedef Outcome<Aws::GameLift::Server::Model::StartMatchBackfillResult, GameLiftError> StartMatchBackfillOutcome;
 #endif
     } // namespace GameLift
 } // namespace Aws

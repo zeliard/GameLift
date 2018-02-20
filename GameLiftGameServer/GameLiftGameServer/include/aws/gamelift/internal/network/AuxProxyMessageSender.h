@@ -13,6 +13,8 @@
 
 #include <aws/gamelift/common/Outcome.h>
 #include <aws/gamelift/server/model/DescribePlayerSessionsRequest.h>
+#include <aws/gamelift/server/model/StartMatchBackfillRequest.h>
+#include <aws/gamelift/server/model/StopMatchBackfillRequest.h>
 #include <aws/gamelift/server/LogParameters.h>
 #include <google/protobuf/message_lite.h>
 #include <sio_client.h>
@@ -48,10 +50,13 @@ namespace Network
         GenericOutcome RemovePlayerSession(std::string playerSessionId, std::string gameSessionId);
         DescribePlayerSessionsOutcome DescribePlayerSessions(const DescribePlayerSessionsRequest &describePlayerSessionsRequest);
         GenericOutcome ReportHealth(bool healthStatus);
+        StartMatchBackfillOutcome BackfillMatchmaking(const StartMatchBackfillRequest &request);
+        GenericOutcome StopMatchmaking(const StopMatchBackfillRequest &request);
     private:
         std::shared_ptr<std::string> ParseMessage(google::protobuf::MessageLite* message);
         GenericOutcome EmitEvent(google::protobuf::MessageLite* message);
         DescribePlayerSessionsOutcome Call(pbuffer::DescribePlayerSessionsRequest* message);
+        StartMatchBackfillOutcome Call(pbuffer::BackfillMatchmakingRequest* message);
         void Send(google::protobuf::MessageLite* message, std::function<void(sio::message::list const&)> ackFunction);
 
         sio::client* m_sio_client;

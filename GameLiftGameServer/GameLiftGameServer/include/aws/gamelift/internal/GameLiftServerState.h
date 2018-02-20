@@ -13,6 +13,9 @@
 
 #include <aws/gamelift/internal/GameLiftCommonState.h>
 #include <aws/gamelift/server/GameLiftServerAPI.h>
+#include <aws/gamelift/server/model/StartMatchBackfillRequest.h>
+#include <aws/gamelift/server/model/StopMatchBackfillRequest.h>
+#include <aws/gamelift/server/model/UpdateGameSession.h>
 #include <aws/gamelift/internal/network/Network.h>
 
 namespace Aws
@@ -42,7 +45,7 @@ namespace Internal
 
         ~GameLiftServerState();
 
-        GenericOutcome ProcessReady(const Aws::GameLift::Server::ProcessParameters &processParameters);
+        GenericOutcome ProcessReady(const Aws::GameLift::Server::ProcessParameters& processParameters);
 
         GenericOutcome ProcessEnding();
 
@@ -56,17 +59,24 @@ namespace Internal
 
         std::string GetGameSessionId();
 
+        long GetTerminationTime();
+
         GenericOutcome AcceptPlayerSession(const std::string& playerSessionId);
 
         GenericOutcome RemovePlayerSession(const std::string& playerSessionId);
 
-        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest &describePlayerSessionsRequest);
+        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest& describePlayerSessionsRequest);
+
+        StartMatchBackfillOutcome BackfillMatchmaking(const Aws::GameLift::Server::Model::StartMatchBackfillRequest& request);
+
+        GenericOutcome StopMatchmaking(const Aws::GameLift::Server::Model::StopMatchBackfillRequest& request);
 
         bool IsProcessReady() { return m_processReady; }
 
         //From Network::AuxProxyMessageHandler
         void OnStartGameSession(GameSession& gameSession, sio::message::list& ack_resp) override;
-        void OnTerminateProcess() override;
+        void OnUpdateGameSession(UpdateGameSession& gameSession, sio::message::list& ack_resp) override;
+        void OnTerminateProcess(long terminationTime) override;
 
     private:
         bool AssertNetworkInitialized();
@@ -80,6 +90,7 @@ namespace Internal
         bool DefaultHealthCheck() { return true; }
 
         std::function<void(Aws::GameLift::Server::Model::GameSession)> m_onStartGameSession;
+        std::function<void(Aws::GameLift::Server::Model::UpdateGameSession)> m_onUpdateGameSession;
         std::function<void()> m_onProcessTerminate;
         std::function<bool()> m_onHealthCheck;
 
@@ -87,6 +98,8 @@ namespace Internal
 
         //Only one game session per process.
         std::string m_gameSessionId;
+
+        long m_terminationTime;
 
         Aws::GameLift::Internal::Network::Network* m_network;
 #else
@@ -102,7 +115,7 @@ namespace Internal
 
         ~GameLiftServerState();
 
-        GenericOutcome ProcessReady(const Aws::GameLift::Server::ProcessParameters &processParameters);
+        GenericOutcome ProcessReady(const Aws::GameLift::Server::ProcessParameters& processParameters);
 
         GenericOutcome ProcessEnding();
 
@@ -116,17 +129,24 @@ namespace Internal
 
         std::string GetGameSessionId();
 
+        long GetTerminationTime();
+
         GenericOutcome AcceptPlayerSession(const std::string& playerSessionId);
 
         GenericOutcome RemovePlayerSession(const std::string& playerSessionId);
 
-        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest &describePlayerSessionsRequest);
+        DescribePlayerSessionsOutcome DescribePlayerSessions(const Aws::GameLift::Server::Model::DescribePlayerSessionsRequest& describePlayerSessionsRequest);
+
+        StartMatchBackfillOutcome BackfillMatchmaking(const Aws::GameLift::Server::Model::StartMatchBackfillRequest& request);
+
+        GenericOutcome StopMatchmaking(const Aws::GameLift::Server::Model::StopMatchBackfillRequest& request);
 
         bool IsProcessReady() { return m_processReady; }
 
         //From Network::AuxProxyMessageHandler
         void OnStartGameSession(GameSession& gameSession, sio::message::list& ack_resp) override;
-        void OnTerminateProcess() override;
+        void OnUpdateGameSession(UpdateGameSession& gameSession, sio::message::list& ack_resp) override;
+        void OnTerminateProcess(long terminationTime) override;
 
     private:
         bool AssertNetworkInitialized();
@@ -140,10 +160,12 @@ namespace Internal
         bool DefaultHealthCheck() { return true; }
 
         std::function<void(Aws::GameLift::Server::Model::GameSession, void*)> m_onStartGameSession;
+        std::function<void(Aws::GameLift::Server::Model::UpdateGameSession, void*)> m_onUpdateGameSession;
         std::function<void(void*)> m_onProcessTerminate;
         std::function<bool(void*)> m_onHealthCheck;
 
         void* m_startGameSessionState;
+        void* m_updateGameSessionState;
         void* m_processTerminateState;
         void* m_healthCheckState;
 
@@ -155,6 +177,8 @@ namespace Internal
 
         //Only one game session per process.
         std::string m_gameSessionId;
+
+        long m_terminationTime;
 
         Aws::GameLift::Internal::Network::Network* m_network;
 #endif
